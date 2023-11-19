@@ -1,11 +1,11 @@
 // App.js
 import React, { useState } from 'react';
-import './App.css';
-import logo from './logo.png';
+import './Components/CSS/Respo.css';
+import logo from './Components/Images/logo.png';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import SignUpPage from './SignUpPage';
-import LoginPage from './LoginPage';
-import DashboardPage from './DashboardPage';
+import LoginPage from './Components/Login';
+import SignUpPage from './Components/SignUp';
+import DashboardPage from './Components/Dashboard';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
