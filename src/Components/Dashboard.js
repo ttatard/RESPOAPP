@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './CSS/Respo.css'; // Import your CSS file
 
-function DashboardPage({ onLogin }) {
+function Dashboard({ onLogin }) {
   const navigate = useNavigate();
   const [showConfirmation, setShowConfirmation] = useState(false);
 
