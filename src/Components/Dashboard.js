@@ -1,39 +1,34 @@
-// HomePage.js
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import './CSS/Respo.css'; // Import your CSS file
 
-function HomePage() {
-  // Logout logic can be added here
+function DashboardPage({ onLogin }) {
+  const navigate = useNavigate();
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
+
   const handleLogout = () => {
-    // Implement logout functionality here
-    console.log('Logging out...');
-    // Add logic to handle logout, clear session, etc.
+    // Redirect to the login page
+    window.location.href = '/login';
+  };
+  
+  const cancelLogout = () => {
+    setShowConfirmation(false);
   };
 
   return (
-    <div>
-      <header>
-        <img src="logo.png" alt="Logo" />
-        <nav>
-          <ul>
-            <li>
-              <Link to="/call-for-help">Call for Help</Link>
-            </li>
-            <li>
-              <Link to="/weather-update">Weather Update</Link>
-            </li>
-            <li>
-              <Link to="/emergency-tutorials">Emergency Tutorials</Link>
-            </li>
-            <li>
-              <button onClick={handleLogout}>Log-out</button>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      {/* Other content for the page */}
+    <div className="dashboard">
+      <nav className="dashboard-nav">
+        <Link to="/call-for-help">Call for Help</Link>
+        <Link to="/weather-update">Weather Update</Link>
+        <Link to="/emergency-tutorials">Emergency Tutorials</Link>
+        <button onClick={handleLogout}>Log Out</button>
+      </nav>
+      {/* Additional content or components can be added here */}
+
+      {/* Logout confirmation box */}
     </div>
   );
 }
 
-export default HomePage;
+export default Dashboard;
