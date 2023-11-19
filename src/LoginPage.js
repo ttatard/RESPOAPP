@@ -1,10 +1,11 @@
 // LoginPage.js
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-function LoginPage() {
+function LoginPage({ onLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -15,9 +16,15 @@ function LoginPage() {
   };
 
   const handleLogin = () => {
-    // Handle login logic here, for example, form submission or API call
-    console.log('Logging in:', { email, password });
-    // Add your logic for actual login here
+    // Perform login logic here (e.g., API call or validation)
+    // For demo, assuming successful login
+    console.log('Login successful:', { email, password });
+    
+    // Call the onLogin function passed from App.js to update isLoggedIn state
+    onLogin();
+    
+    // Redirect to the dashboard upon successful login
+    navigate('/dashboard'); // Use navigate instead of history.push
   };
 
   return (
@@ -43,7 +50,9 @@ function LoginPage() {
       <button onClick={handleLogin}>Login</button>
       <p>
         Do not have an account?{' '}
-        <Link to="/" className="signup-link">Sign up here</Link>
+        <Link to="/" className="signup-link">
+          Sign up here
+        </Link>
       </p>
     </div>
   );
