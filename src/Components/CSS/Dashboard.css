@@ -55,7 +55,7 @@
   background-color: #000; /* Change the color as needed */
   position: absolute;
   bottom: -10px; /* Adjust this value to position the line precisely */
-  left: 0;
+  left: 3;
 }
 
 .callforhelp {

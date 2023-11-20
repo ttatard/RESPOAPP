@@ -53,8 +53,13 @@ function Dashboard({ onLogin }) {
         trusted partner for immediate support.
         </p><br /><br />
 
-        <div className="dashboard">
-          <Link to="/getstartedhelp">Get Started on Call for Help</Link><br /><br /><br /><br />
+        <div className="callforhelp">
+  {/* Other content */}
+  <div className="dashboard">
+    <Link to="/getstartedhelp" className="get-started-btn">Get Started on Call for Help</Link>
+    {/* Other content */}
+  </div>
+
         
 
           <div className="extended-line"></div>
@@ -71,8 +76,12 @@ function Dashboard({ onLogin }) {
         ahead of the weather and make informed decisions for your daily activities.
         </p><br /><br />
 
-        <div className="dashboard">
-        <Link to="/getstartedonweather">Get Started on Weather Update</Link><br /><br /><br /><br />
+        <div className="weatherupdate">
+  {/* Other content */}
+  <div className="dashboard">
+    <Link to="/getstartedonweather" className="get-started-btn">Get Started on Weather Update</Link>
+    {/* Other content */}
+  </div>
 
         <div className="third-line"></div>
         
@@ -91,31 +100,18 @@ function Dashboard({ onLogin }) {
         to help you every step of the way.
         </p><br /><br />
 
-        <div className="dashboard">
-        <Link to="/getstartedontutorials">Get Started on Emergency Tutorials</Link><br /><br /><br /><br />
+        <div className="emergencytutorials">
+  {/* Other content */}
+  <div className="dashboard">
+    <Link to="/getstartedontutorials" className="get-started-btn">Get Started on Emergency Tutorials</Link>
+    {/* Other content */}
+  </div>
         
 
         </div><br /><br /><br />
   </div>
-        
-        
-
-      {/* Logout confirmation box */}
-    {/* Footer */}
-
-    <footer className="footer">
-        <div className="footer-content">
-          <div className="footer-left">
-            <p className="copyright">Copyright © 2023 RESPO Inc. All rights reserved</p>
-          </div>
-          <div className="footer-right">
-            <p className="location">Cebu City, Philippines</p>
-          </div>
-        </div>
-    </footer>
     
-    
-    </div>
+  </div>  
   );
 }
 
