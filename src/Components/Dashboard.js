@@ -15,13 +15,18 @@ function Dashboard({ onLogin }) {
     setShowConfirmation(false);
   };
 
+  const handleWeatherUpdateClick = () => {
+    // Navigate to the Weather Update page when the button is clicked
+    navigate('/weather-update');
+  };
+
   return (
     <div className="dashboard">
       <nav className="dashboard-nav">
         <Link to="/call-for-help">Call for Help</Link>
         <Link to="/weather-update">Weather Update</Link>
         <Link to="/emergency-tutorials">Emergency Tutorials</Link>
-        <button onClick={handleLogout}>Log Out</button>
+        <Link to="/login">Log Out</Link>
       </nav>
 
       {/* Additional content or components can be added here */}
@@ -70,7 +75,7 @@ function Dashboard({ onLogin }) {
         </p><br /><br />
 
         <div className="dashboard">
-        <Link to="/getstartedonweather">Get Started on Weather Update</Link><br /><br /><br /><br />
+        <button onClick={handleWeatherUpdateClick}>Get Started on Weather Update</button>
 
         <div className="third-line"></div>
         

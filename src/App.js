@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import LoginPage from './Components/Login';
 import SignUpPage from './Components/SignUp';
 import DashboardPage from './Components/Dashboard';
+import WeatherUpdate from './Components/WeatherUpdate'; // Import WeatherUpdate component
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -52,6 +54,7 @@ function App() {
             path="/dashboard"
             element={isLoggedIn ? <DashboardPage /> : <Navigate to="/login" />}
           />
+          <Route path="/weather-update" element={<WeatherUpdate />} /> {/* Add this line */}
         </Routes>
       </div>
     </Router>
