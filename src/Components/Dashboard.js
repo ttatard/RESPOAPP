@@ -80,6 +80,7 @@ function Dashboard({ onLogin }) {
 
         <div className="emergencytutorials">
         <br /><br /><p className="emergencyhead">EMERGENCY <span style={{ color: 'red' }}>TUTORIALS</span></p>
+
         <p className="description">
         Our step-by-step guides and expert insights will walk you through the procedures, <br />
         providing you with the confidence and know-how to handle emergencies with a level head. <br />
