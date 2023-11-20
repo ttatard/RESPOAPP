@@ -61,7 +61,21 @@
 .callforhelp {
   width: 90%; /* Adjust the width as needed */
   margin: 0 auto; /* Center the div horizontally */
+  text-align: right; /* Align text to the left within the div */
+  position: relative;
+}
+
+.weatherupdate {
+  width: 90%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the div horizontally */
   text-align: left; /* Align text to the left within the div */
+  position: relative;
+}
+
+.emergencytutorials{
+  width: 90%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the div horizontally */
+  text-align: right; /* Align text to the left within the div */
   position: relative;
 }
 
@@ -103,3 +117,4 @@
   .footer-right {
     text-align: right;
   }
+

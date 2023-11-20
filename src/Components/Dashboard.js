@@ -40,10 +40,9 @@ function Dashboard({ onLogin }) {
 
 <div className="scroll-line"></div>
 </div>
-<div>
 
-<div className="callforhelp">
-        <br /><br /><p className="callforhead">CALL FOR <span style={{ color: 'red' }}>HELP</span></p>
+  <div className="callforhelp">
+        <br /><br /><p className="callforhead">CALL FOR <span style={{color: 'red'}}>HELP</span></p>
         <p className="description">
         Your lifeline during critical moments. Our mission is simple yet essential: to streamline<br />
         communication to emergency services authorities, ensuring that help is just a call away<br />
@@ -55,14 +54,16 @@ function Dashboard({ onLogin }) {
         </p><br /><br />
 
         <div className="dashboard">
-        <Link to="/getstartedhelp">Get Started on Call for Help</Link><br /><br /><br /><br />
+          <Link to="/getstartedhelp">Get Started on Call for Help</Link><br /><br /><br /><br />
+        
 
-        <div className="extended-line"></div>
+          <div className="extended-line"></div>
         
         </div>
+  </div>
 
-        <div className="weatherupdate">
-        <br /><br /><p className="weatherhead">WEATHER <span style={{ color: 'red' }}>UPDATE</span></p>
+  <div className="weatherupdate">
+        <br /><br /><p className="weatherhead">WEATHER <span style={{color: 'red'}}>UPDATE</span></p>
         <p className="description">
         Your go-to source for all things weather-related! We are here to keep you informed,<br /> 
         prepared, and in the know about the latest weather conditions, forecasts, and <br />
@@ -77,10 +78,10 @@ function Dashboard({ onLogin }) {
         
         
         </div>
+  </div>
 
         <div className="emergencytutorials">
         <br /><br /><p className="emergencyhead">EMERGENCY <span style={{ color: 'red' }}>TUTORIALS</span></p>
-
         <p className="description">
         Our step-by-step guides and expert insights will walk you through the procedures, <br />
         providing you with the confidence and know-how to handle emergencies with a level head. <br />
@@ -92,9 +93,12 @@ function Dashboard({ onLogin }) {
 
         <div className="dashboard">
         <Link to="/getstartedontutorials">Get Started on Emergency Tutorials</Link><br /><br /><br /><br />
-</div>
-</div><br /><br /><br />
-</div>
+        
+
+        </div><br /><br /><br />
+  </div>
+        
+        
 
       {/* Logout confirmation box */}
     {/* Footer */}
@@ -108,9 +112,9 @@ function Dashboard({ onLogin }) {
             <p className="location">Cebu City, Philippines</p>
           </div>
         </div>
-      </footer>
-    </div>
-    </div>
+    </footer>
+    
+    
     </div>
   );
 }
