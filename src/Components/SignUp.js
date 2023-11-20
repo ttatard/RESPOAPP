@@ -98,6 +98,8 @@ function SignUpPage() {
             />
           </div>
           <button onClick={handleSignUp}>Sign Up</button>
+          <br></br>
+          <br></br>
           <p>
             Already have an account?{' '}
             <Link to="/login" className="login-link">
