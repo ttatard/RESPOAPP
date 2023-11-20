@@ -19,13 +19,35 @@
 }
 
 .description {
+    font-size: 20px;
+}
+
+.allyouneed {
   width: 90%; /* Adjust the width as needed */
   margin: 0 auto; /* Center the div horizontally */
   text-align: left; /* Align text to the left within the div */
   position: relative;
 }
 
-/* Respo.css */
+.respohead {
+    font-size: 85px;
+    font-weight: bold;
+}
+
+.callforhead {
+    font-size: 70px;
+    font-weight: bold;
+}
+
+.weatherhead {
+    font-size: 70px;
+    font-weight: bold;
+}
+
+.emergencyhead {
+    font-size: 70px;
+    font-weight: bold;
+}
 
 .scroll-line {
   width: 100%;
