@@ -2,19 +2,16 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './CSS/Dashboard.css'; // Import your CSS file
 
-function Dashboard({ onLogin }) {
+function Dashboard({ onLogout }) {
   const navigate = useNavigate();
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleLogout = () => {
+    onLogout();
     // Redirect to the login page
-    window.location.href = '/login';
+    navigate('/login');
   };
   
-  const cancelLogout = () => {
-    setShowConfirmation(false);
-  };
-
   const handleWeatherUpdateClick = () => {
     // Navigate to the Weather Update page when the button is clicked
     navigate('/weather-update');
@@ -26,7 +23,7 @@ function Dashboard({ onLogin }) {
         <Link to="/call-for-help">Call for Help</Link>
         <Link to="/weather-update">Weather Update</Link>
         <Link to="/emergency-tutorials">Emergency Tutorials</Link>
-        <Link to="/login">Log Out</Link>
+        <button onClick={handleLogout}>Log Out</button>
       </nav>
 
       {/* Additional content or components can be added here */}
@@ -81,17 +78,8 @@ function Dashboard({ onLogin }) {
         ahead of the weather and make informed decisions for your daily activities.
         </p><br /><br />
 
-<<<<<<< HEAD
-        <div className="weatherupdate">
-  {/* Other content */}
   <div className="dashboard">
     <Link to="/getstartedonweather" className="get-started-btn">Get Started on Weather Update</Link>
-    {/* Other content */}
-  </div>
-=======
-        <div className="dashboard">
-        <button onClick={handleWeatherUpdateClick}>Get Started on Weather Update</button>
->>>>>>> 1cbca535792438818d81e2c87cd085df2990b401
 
         <div className="third-line"></div>
         
