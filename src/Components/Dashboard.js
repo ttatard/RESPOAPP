@@ -55,10 +55,12 @@ function Dashboard({ onLogin }) {
 
         <div className="dashboard">
         <Link to="/getstartedhelp">Get Started on Call for Help</Link><br /><br /><br /><br />
+        
 
         <div className="extended-line"></div>
         
         </div>
+        </div></div>
 
         <div className="weatherupdate">
         <br /><br /><p className="weatherhead">WEATHER UPDATE</p>
@@ -76,6 +78,7 @@ function Dashboard({ onLogin }) {
         
         
         </div>
+        <div></div>
 
         <div className="emergencytutorials">
         <br /><br /><p className="emergencyhead">EMERGENCY TUTORIALS</p>
@@ -90,9 +93,9 @@ function Dashboard({ onLogin }) {
 
         <div className="dashboard">
         <Link to="/getstartedontutorials">Get Started on Emergency Tutorials</Link><br /><br /><br /><br />
-</div>
+
 </div><br /><br /><br />
-</div>
+
 
       {/* Logout confirmation box */}
     {/* Footer */}
