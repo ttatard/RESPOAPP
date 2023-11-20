@@ -192,4 +192,13 @@ p {
   /* Add any specific styles for the location text */
 }
 
+.image-content {
+  margin-left: 20px; /* Adjust this margin as needed */
+}
+
+.image-content img {
+  max-width: 100%;
+  height: auto;
+}
+
 
