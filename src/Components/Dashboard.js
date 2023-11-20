@@ -6,7 +6,6 @@ function Dashboard({ onLogin }) {
   const navigate = useNavigate();
   const [showConfirmation, setShowConfirmation] = useState(false);
 
-
   const handleLogout = () => {
     // Redirect to the login page
     window.location.href = '/login';
@@ -24,11 +23,95 @@ function Dashboard({ onLogin }) {
         <Link to="/emergency-tutorials">Emergency Tutorials</Link>
         <button onClick={handleLogout}>Log Out</button>
       </nav>
+
       {/* Additional content or components can be added here */}
+      <div className="description">
+        <p>Welcome!</p>
+        <p>ALL YOU NEED<br />IN RESPO</p><br />
+        <p>
+          In 2026, we aim to become Cebu's top service provider with our cutting-edge<br />
+          emergency response app. Our goal is to help ensure the safety and well-being<br />
+          of every resident and visitor in Cebu by providing a reliable and efficient<br />
+          platform that connects people in need with the assistance they require in times<br />
+          of crisis.
+        </p><br /><br />
+        <p>Scroll down to see more.</p><br /><br />
+
+<div className="scroll-line"></div>
+</div>
+<div>
+
+<div className="callforhelp">
+        <br /><br /><p>CALL FOR HELP</p>
+        <p>
+        Your lifeline during critical moments. Our mission is simple yet essential: to streamline<br />
+        communication to emergency services authorities, ensuring that help is just a call away<br />
+        when you need it most. We understand that in emergencies, every second counts. With<br />
+        our service, you can connect with the right assistance swiftly and efficiently, putting your<br /> 
+        safety and peace of mind as our top priority. Join us in making your community safer and<br />
+        more responsive in times of need. When you're facing a crisis, "Call for Help" is your<br /> 
+        trusted partner for immediate support.
+        </p><br /><br />
+
+        <div className="dashboard">
+        <Link to="/getstartedhelp">Get Started on Call for Help</Link><br /><br /><br /><br />
+
+        <div className="extended-line"></div>
+        
+        </div>
+
+        <div className="weatherupdate">
+        <br /><br /><p>WEATHER UPDATE</p>
+        <p>
+        Your go-to source for all things weather-related! We are here to keep you informed,<br /> 
+        prepared, and in the know about the latest weather conditions, forecasts, and <br />
+        meteorological insights. With our real-time updates and expert analysis, you can stay <br />
+        ahead of the weather and make informed decisions for your daily activities.
+        </p><br /><br />
+
+        <div className="dashboard">
+        <Link to="/getstartedonweather">Get Started on Weather Update</Link><br /><br /><br /><br />
+
+        <div className="third-line"></div>
+        
+        
+        </div>
+
+        <div className="emergencytutorials">
+        <br /><br /><p>EMERGENCY TUTORIALS</p>
+        <p>
+        Our step-by-step guides and expert insights will walk you through the procedures, <br />
+        providing you with the confidence and know-how to handle emergencies with a level head. <br />
+        We believe that knowledge is the key to resilience, and our tutorials are your key to being <br />
+        well-prepared. Join us on this journey to a safer, more secure future, where you have the <br />
+        power to protect yourself and your community. Knowledge is empowerment, and we're here <br />
+        to help you every step of the way.
+        </p><br /><br />
+
+        <div className="dashboard">
+        <Link to="/getstartedontutorials">Get Started on Emergency Tutorials</Link><br /><br /><br /><br />
+</div>
+</div><br /><br /><br />
+</div>
 
       {/* Logout confirmation box */}
+    {/* Footer */}
+
+    <footer className="footer">
+        <div className="footer-content">
+          <div className="footer-left">
+            <p className="copyright">Copyright © 2023 RESPO Inc. All rights reserved</p>
+          </div>
+          <div className="footer-right">
+            <p className="location">Cebu City, Philippines</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    </div>
     </div>
   );
 }
+
 
 export default Dashboard;

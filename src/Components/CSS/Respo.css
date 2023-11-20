@@ -89,3 +89,107 @@
   .signup-link:hover {
     color: red;
   }
+
+  /* Respo.css */
+
+/* Define default button styles */
+.dashboard-nav a,
+.dashboard-nav button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 20px;
+  border: none;
+  text-decoration: none;
+  color: black;
+  background-color: #e1e1e1;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Style for hover effect */
+.dashboard-nav a:hover,
+.dashboard-nav button:hover {
+  background-color: red;
+  color: white;
+}
+
+.description {
+  width: 90%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the div horizontally */
+  text-align: left; /* Align text to the left within the div */
+  position: relative;
+}
+
+/* Respo.css */
+
+.scroll-line {
+  width: 100%;
+  height: 1px;
+  background-color: #000; /* Change the color as needed */
+  position: absolute;
+  bottom: -10px; /* Adjust this value to position the line precisely */
+  left: 0;
+}
+
+.callforhelp {
+  width: 90%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the div horizontally */
+  text-align: left; /* Align text to the left within the div */
+  position: relative;
+}
+
+.extended-line {
+  height: 1px;
+  background-color: black;
+  width: 100%; /* Extend the line across the container */
+}
+
+.third-line {
+  height: 1px;
+  background-color: black;
+  width: 100%; /* Extend the line across the container */
+}
+
+.footer {
+  background-color: #f2f2f2; /* Grey background color */
+  padding: 20px; /* Adjust padding as needed */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black; /* Font color */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-left {
+  text-align: left;
+}
+
+.footer-right {
+  text-align: right;
+}
+
+/* Style for the copyright and location texts */
+p {
+  margin: 0;
+  font-size: 14px; /* Adjust font size as needed */
+}
+
+/* Specific styles for copyright and location */
+.copyright {
+  /* Add any specific styles for the copyright text */
+}
+
+.location {
+  /* Add any specific styles for the location text */
+}
+
+
