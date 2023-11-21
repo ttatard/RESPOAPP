@@ -1,0 +1,124 @@
+/* Styles for WeatherUpdate component */
+.weather-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.weather-info {
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.weather-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.weather-icon img {
+    width: 80px;
+    height: 80px;
+}
+
+.temperature {
+    font-size: 32px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.description {
+    text-transform: capitalize;
+    margin-top: 10px;
+}
+
+.additional-info p {
+    margin-bottom: 8px;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+}
+
+@keyframes clearSkyAnimation {
+    0% { background-color: #9ad4db; } /* Light blue */
+    100% { background-color: #78c2ad; } /* Green */
+}
+
+/* Animation for clouds */
+@keyframes cloudsAnimation {
+    0% { background-color: #b3cde0; } /* Light grayish blue */
+    100% { background-color: #d9e1e8; } /* Light gray */
+}
+
+/* Animation for rain */
+@keyframes rainAnimation {
+    0% { background-color: #a6a6a6; } /* Dark gray */
+    100% { background-color: #737373; } /* Gray */
+}
+
+/* Animation for thunderstorm */
+@keyframes thunderstormAnimation {
+    0% { background-color: #545454; } /* Darker gray */
+    100% { background-color: #1f1f1f; } /* Black */
+}
+
+/* Apply animations based on weather description */
+
+.weather-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    animation-name: cloudsAnimation; /* Default animation */
+}
+
+/* Apply animations based on different weather descriptions */
+.weather-info[data-weather='Clear'] {
+    animation-name: clearSkyAnimation;
+}
+
+.weather-info[data-weather='Clouds'] {
+    animation-name: cloudsAnimation;
+}
+
+.weather-info[data-weather='Rain'] {
+    animation-name: rainAnimation;
+}
+
+.weather-info[data-weather='Thunderstorm'] {
+    animation-name: thunderstormAnimation;
+}
