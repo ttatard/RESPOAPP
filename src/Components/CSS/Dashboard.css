@@ -118,3 +118,10 @@
     text-align: right;
   }
 
+  .zart-image {
+    width: 500px; /* Increase the width */
+    height: auto; /* Maintain aspect ratio */
+    float: right; /* Position the image to the right */
+    margin-top: -450px; /* Move the image higher by adjusting the top margin */
+    /* Additional styles for the image */
+  }

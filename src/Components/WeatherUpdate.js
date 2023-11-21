@@ -10,7 +10,9 @@ const api = {
 const WeatherUpdate = () => {
     const [query, setQuery] = useState('');
     const [weather, setWeather] = useState(null);
+    const [forecast, setForecast] = useState([]);
     const [dataStatus, setDataStatus] = useState('loading');
+    const [forecastIndex, setForecastIndex] = useState(0);
 
     const searchWeather = async (e) => {
         e.preventDefault();
@@ -19,12 +21,20 @@ const WeatherUpdate = () => {
                 params: {
                     q: query,
                     appid: api.key,
-                    units: 'metric' // You can adjust the units as needed
+                    units: 'metric'
                 }
             });
             setWeather(response.data);
             setDataStatus('available');
             setQuery('');
+            const forecastResponse = await axios.get(`${api.base}forecast`, {
+                params: {
+                    id: response.data.id,
+                    appid: api.key,
+                    units: 'metric'
+                }
+            });
+            setForecast(forecastResponse.data.list);
         } catch (error) {
             console.error('Error fetching weather data:', error);
             setDataStatus('unavailable');
@@ -32,7 +42,6 @@ const WeatherUpdate = () => {
     };
 
     useEffect(() => {
-        // Apply animation based on weather description
         const weatherInfo = document.querySelector('.weather-info');
         if (weather && weather.weather && weather.weather[0]) {
             const weatherDescription = weather.weather[0].main;
@@ -44,8 +53,22 @@ const WeatherUpdate = () => {
         return `http://openweathermap.org/img/w/${iconCode}.png`;
     };
 
+    const showNextForecast = () => {
+        if (forecastIndex + 3 < forecast.length) {
+            setForecastIndex(forecastIndex + 3);
+        }
+    };
+
+    const showPreviousForecast = () => {
+        if (forecastIndex - 3 >= 0) {
+            setForecastIndex(forecastIndex - 3);
+        }
+    };
+
     return (
         <div className="weather-container">
+            
+
             <form onSubmit={searchWeather}>
                 <input
                     type="text"
@@ -76,7 +99,24 @@ const WeatherUpdate = () => {
                     <div className="additional-info">
                         <p>Humidity: {weather.main.humidity}%</p>
                         <p>Wind Speed: {weather.wind.speed} m/s</p>
-                        {/* Add more weather information as needed */}
+                    </div>
+                    <h3>Predictive Weather Forecast:</h3>
+                    <div className="forecast">
+                        {forecast.slice(forecastIndex, forecastIndex + 3).map((item, index) => (
+                            <div key={index} className="forecast-item">
+                                <p>Date: {item.dt_txt}</p>
+                                <p>Temperature: {Math.round(item.main.temp)}°C</p>
+                                <p>Description: {item.weather[0].description}</p>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="forecast-navigation">
+                        <button onClick={showPreviousForecast} disabled={forecastIndex === 0}>
+                            Previous
+                        </button>
+                        <button onClick={showNextForecast} disabled={forecastIndex + 3 >= forecast.length}>
+                            Next
+                        </button>
                     </div>
                 </div>
             )}
