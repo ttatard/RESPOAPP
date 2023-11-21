@@ -2,19 +2,16 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './CSS/Dashboard.css'; // Import your CSS file
 
-function Dashboard({ onLogin }) {
+function Dashboard({ onLogout }) {
   const navigate = useNavigate();
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleLogout = () => {
+    onLogout();
     // Redirect to the login page
-    window.location.href = '/login';
+    navigate('/login');
   };
   
-  const cancelLogout = () => {
-    setShowConfirmation(false);
-  };
-
   const handleWeatherUpdateClick = () => {
     // Navigate to the Weather Update page when the button is clicked
     navigate('/weather-update');
@@ -26,7 +23,7 @@ function Dashboard({ onLogin }) {
         <Link to="/call-for-help">Call for Help</Link>
         <Link to="/weather-update">Weather Update</Link>
         <Link to="/emergency-tutorials">Emergency Tutorials</Link>
-        <Link to="/login">Log Out</Link>
+        <button onClick={handleLogout}>Log Out</button>
       </nav>
 
       {/* Additional content or components can be added here */}
@@ -58,8 +55,13 @@ function Dashboard({ onLogin }) {
         trusted partner for immediate support.
         </p><br /><br />
 
-        <div className="dashboard">
-          <Link to="/getstartedhelp">Get Started on Call for Help</Link><br /><br /><br /><br />
+        <div className="callforhelp">
+  {/* Other content */}
+  <div className="dashboard">
+    <Link to="/getstartedhelp" className="get-started-btn">Get Started on Call for Help</Link>
+    {/* Other content */}
+  </div>
+
         
 
           <div className="extended-line"></div>
@@ -76,8 +78,8 @@ function Dashboard({ onLogin }) {
         ahead of the weather and make informed decisions for your daily activities.
         </p><br /><br />
 
-        <div className="dashboard">
-        <button onClick={handleWeatherUpdateClick}>Get Started on Weather Update</button>
+  <div className="dashboard">
+    <Link to="/getstartedonweather" className="get-started-btn">Get Started on Weather Update</Link>
 
         <div className="third-line"></div>
         
@@ -85,8 +87,8 @@ function Dashboard({ onLogin }) {
         </div>
   </div>
 
-  <div className="emergencytutorials">
-        <br /><br /><p className="emergencyhead">EMERGENCY <span style={{color: 'red'}}>TUTORIALS</span></p>
+        <div className="emergencytutorials">
+        <br /><br /><p className="emergencyhead">EMERGENCY <span style={{ color: 'red' }}>TUTORIALS</span></p>
         <p className="description">
         Our step-by-step guides and expert insights will walk you through the procedures, <br />
         providing you with the confidence and know-how to handle emergencies with a level head. <br />
@@ -96,8 +98,12 @@ function Dashboard({ onLogin }) {
         to help you every step of the way.
         </p><br /><br />
 
-        <div className="dashboard">
-        <Link to="/getstartedontutorials">Get Started on Emergency Tutorials</Link><br /><br /><br /><br />
+        <div className="emergencytutorials">
+  {/* Other content */}
+  <div className="dashboard">
+    <Link to="/getstartedontutorials" className="get-started-btn">Get Started on Emergency Tutorials</Link>
+    {/* Other content */}
+  </div>
         
 
         </div><br /><br /><br />

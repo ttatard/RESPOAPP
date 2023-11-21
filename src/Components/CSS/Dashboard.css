@@ -55,7 +55,7 @@
   background-color: #000; /* Change the color as needed */
   position: absolute;
   bottom: -10px; /* Adjust this value to position the line precisely */
-  left: 0;
+  left: 3;
 }
 
 .callforhelp {
@@ -116,5 +116,9 @@
   
   .footer-right {
     text-align: right;
+<<<<<<< HEAD
   }
 
+=======
+  }
+>>>>>>> 1098aa871e1c84c0606fa04c3baa9c00e91d81bc

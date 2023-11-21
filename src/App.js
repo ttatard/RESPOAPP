@@ -1,4 +1,3 @@
-// App.js
 import React, { useState } from 'react';
 import './Components/CSS/Respo.css';
 import logo from './Components/Images/logo.png';
@@ -8,7 +7,6 @@ import SignUpPage from './Components/SignUp';
 import DashboardPage from './Components/Dashboard';
 import WeatherUpdate from './Components/WeatherUpdate'; // Import WeatherUpdate component
 
-
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -17,6 +15,12 @@ function App() {
     // Perform your login logic here
     // For demo, assuming successful login
     setIsLoggedIn(true);
+  };
+
+  // Function to handle logout
+  const handleLogout = () => {
+    // Perform logout logic here
+    setIsLoggedIn(false);
   };
 
   return (
@@ -52,9 +56,9 @@ function App() {
           <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
           <Route
             path="/dashboard"
-            element={isLoggedIn ? <DashboardPage /> : <Navigate to="/login" />}
+            element={isLoggedIn ? <DashboardPage onLogout={handleLogout} /> : <Navigate to="/login" />}
           />
-          <Route path="/weather-update" element={<WeatherUpdate />} /> {/* Add this line */}
+          <Route path="/weather-update" element={<WeatherUpdate />} />
         </Routes>
       </div>
     </Router>
