@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './CSS/Dashboard.css'; // Import your CSS file
+import zartImage from './zart.png'; // Ensure the correct path to the image
+
+
 
 function Dashboard({ onLogout }) {
   const navigate = useNavigate();
@@ -28,20 +31,25 @@ function Dashboard({ onLogout }) {
 
       {/* Additional content or components can be added here */}
       <div className="allyouneed">
-        <p>Welcome!</p>
-        <p className="respohead">ALL YOU NEED<br />IN <span style={{color: 'red'}}>RESPO</span></p><br />
-        <p className="description">
-          In 2026, we aim to become Cebu's top service provider with our cutting-edge<br />
-          emergency response app. Our goal is to help ensure the safety and well-being<br />
-          of every resident and visitor in Cebu by providing a reliable and efficient<br />
-          platform that connects people in need with the assistance they require in times<br />
-          of crisis.
-        </p><br /><br />
-        <p>Scroll down to see more.</p><br /><br />
-        
+  <p>Welcome!</p>
+  <p className="respohead">ALL YOU NEED<br />IN <span style={{color: 'red'}}>RESPO</span></p><br />
+  <p className="description">
+    In 2026, we aim to become Cebu's top service provider with our cutting-edge<br />
+    emergency response app. Our goal is to help ensure the safety and well-being<br />
+    of every resident and visitor in Cebu by providing a reliable and efficient<br />
+    platform that connects people in need with the assistance they require in times<br />
+    of crisis.
+  </p><br /><br />
+  <p>Scroll down to see more.</p><br /><br />
 
-<div className="scroll-line"></div>
+  <div className="scroll-line">
+    <div>
+      <img src={zartImage} alt="Zart" className="zart-image" />
+    </div>
+  </div>
 </div>
+
+
 
   <div className="callforhelp">
         <br /><br /><p className="callforhead">CALL FOR <span style={{color: 'red'}}>HELP</span></p>
