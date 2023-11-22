@@ -11,9 +11,10 @@
     font-family: Arial, sans-serif;
 }
 
-form {
+.search-form {
     display: flex;
-    align-items: center; /* Vertical alignment */
+    align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
 }
 

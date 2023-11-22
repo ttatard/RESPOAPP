@@ -29,13 +29,31 @@ function SignUpPage() {
     setPassword(e.target.value);
   };
 
-  const handleSignUp = () => {
-    // Handle sign-up logic here, for example, form submission or API call
-    console.log('Signing up:', { firstName, lastName, number, email, password });
-    // Add your logic for actual sign-up here
+  const handleSignUp = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/user/insertUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          fName: firstName,
+          lName: lastName,
+          pNum: number,
+          eMail: email,
+          pWord: password
+        })
+      });
 
-    // Show success message after sign-up
-    setShowSuccessMessage(true);
+      if (response.ok) {
+        setShowSuccessMessage(true);
+      } else {
+        // Handle signup failure, show error message, etc.
+      }
+    } catch (error) {
+      console.error('Error during signup:', error);
+      // Handle signup error, show error message, etc.
+    }
   };
 
   const handleProceed = () => {
