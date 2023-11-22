@@ -3,6 +3,7 @@ import './Components/CSS/Respo.css';
 import logo from './Components/Images/logo.png';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import LoginPage from './Components/Login';
+import CallforHelp from './Components/CallforHelp'; 
 import SignUpPage from './Components/SignUp';
 import DashboardPage from './Components/Dashboard';
 import WeatherUpdate from './Components/WeatherUpdate'; // Import WeatherUpdate component
@@ -59,6 +60,8 @@ function App() {
             element={isLoggedIn ? <DashboardPage onLogout={handleLogout} /> : <Navigate to="/login" />}
           />
           <Route path="/weather-update" element={<WeatherUpdate />} />
+          <Route path="/call-for-help" 
+                      element={<CallforHelp onLogout={handleLogout} />} />
         </Routes>
       </div>
     </Router>
