@@ -1,30 +1,45 @@
-// LoginPage.js
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 function LoginPage({ onLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState(false); // State to track login errors
   const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+    setLoginError(false); // Reset error state when email changes
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+    setLoginError(false); // Reset error state when password changes
   };
 
-  const handleLogin = () => {
-    // Perform login logic here (e.g., API call or validation)
-    // For demo, assuming successful login
-    console.log('Login successful:', { email, password });
-    
-    // Call the onLogin function passed from App.js to update isLoggedIn state
-    onLogin();
-    
-    // Redirect to the dashboard upon successful login
-    navigate('/dashboard'); // Use navigate instead of history.push
+  const handleLogin = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/user/getAllUsers');
+      if (response.ok) {
+        const users = await response.json();
+        const user = users.find(
+          (u) => u.eMail === email && u.pWord === password
+        );
+        if (user) {
+          // If login successful, proceed to dashboard
+          onLogin();
+          navigate('/dashboard');
+        } else {
+          // Handle invalid credentials
+          setLoginError(true); // Set login error state to display the prompt
+        }
+      } else {
+        // Handle API error
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+      // Handle login error
+    }
   };
 
   return (
@@ -47,6 +62,7 @@ function LoginPage({ onLogin }) {
           placeholder="Enter your Password"
         />
       </div>
+      {loginError && <p style={{ color: 'red' }}>Incorrect email or password. Please try again.</p>}
       <button onClick={handleLogin}>Login</button>
       <br></br>
       <br></br>
