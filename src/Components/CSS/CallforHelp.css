@@ -1,0 +1,23 @@
+/* CallforHelp.css */
+
+/* Style for Call for Help specific buttons */
+.callforhelp-btn {
+    /* Add specific styles for Call for Help buttons */
+    /* You can modify this to suit your design */
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 20px;
+    border: none;
+    text-decoration: none;
+    color: black;
+    background-color: #e1e1e1;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  /* Style for hover effect on Call for Help buttons */
+  .callforhelp-btn:hover {
+    background-color: red;
+    color: white;
+  }
+  
