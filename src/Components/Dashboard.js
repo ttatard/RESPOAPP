@@ -5,7 +5,6 @@ import zartImage from './zart.png'; // Ensure the correct path to the image
 import CallforHelp from './CallforHelp'; 
 
 
-
 function Dashboard({ onLogout }) {
   const navigate = useNavigate();
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -50,8 +49,6 @@ function Dashboard({ onLogout }) {
   </div>
 </div>
 
-
-
   <div className="callforhelp">
         <br /><br /><p className="callforhead">CALL FOR <span style={{color: 'red'}}>HELP</span></p>
         <p className="description">
@@ -67,7 +64,7 @@ function Dashboard({ onLogout }) {
         <div className="callforhelp">
   {/* Other content */}
   <div className="dashboard">
-    <Link to="/getstartedhelp" className="get-started-btn">Get Started on Call for Help</Link>
+    <Link to="/call-for-help" className="get-started-btn">Get Started on Call for Help</Link>
     {/* Other content */}
   </div>
 
@@ -88,7 +85,7 @@ function Dashboard({ onLogout }) {
         </p><br /><br />
 
   <div className="dashboard">
-    <Link to="/getstartedonweather" className="get-started-btn">Get Started on Weather Update</Link>
+    <Link to="/weather-update" className="get-started-btn">Get Started on Weather Update</Link>
 
         <div className="third-line"></div>
         
@@ -110,7 +107,7 @@ function Dashboard({ onLogout }) {
         <div className="emergencytutorials">
   {/* Other content */}
   <div className="dashboard">
-    <Link to="/getstartedontutorials" className="get-started-btn">Get Started on Emergency Tutorials</Link>
+    <Link to="/emergency-tutorials" className="get-started-btn">Get Started on Emergency Tutorials</Link>
     {/* Other content */}
   </div>
         
