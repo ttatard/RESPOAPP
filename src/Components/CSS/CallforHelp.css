@@ -1,8 +1,5 @@
-/* CallforHelp.css */
+/* Combined CSS for CallforHelp.css and ButtonDescriptions.css */
 
-/* Existing styles... */
-
-/* New styles for call-for-help section */
 .call-for-help {
   text-align: center;
   margin-top: 20px;
@@ -40,8 +37,8 @@
 .see-directory-btn,
 .emergency-btn {
   display: inline-block;
-  padding: 12px 20px; /* Adjust button padding */
-  margin-bottom: 15px; /* Adjust button margin */
+  padding: 10px 20px; /* Adjusted button padding */
+  margin-bottom: 5px; /* Further reduced button margin */
   border: none;
   text-decoration: none;
   color: black;
@@ -49,7 +46,7 @@
   border-radius: 5px;
   transition: background-color 0.3s, color 0.3s;
   width: 100%;
-  font-size: 1.2rem; /* Adjust button text size */
+  font-size: 1.2rem; /* Adjusted button text size */
 }
 
 .see-directory-btn:hover{
@@ -61,28 +58,43 @@
   color: white;
 }
 
-/* Additional styles for text below buttons */
-.button-description {
-  text-align: justify;
-  margin-bottom: 15px; /* Adjust margin below button description */
-  font-size: 1rem; /* Adjust text size below buttons */
-  width: 50%; /* Adjust the width to be the same as buttons */
-  margin-left: 25%; /* Remove left margin */
-}
-
 /* Additional styles for left and right buttons */
 .button-container {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px; /* Adjust margin between button containers */
+  margin-bottom: 5px; /* Further reduced margin between button containers */
 }
 
 .left-button,
 .right-button {
-  width: 48%; /* Adjust button container width */
+  width: 50%; /* Adjusted button container width */
 }
 
-.left-button .see-directory-btn,
+.left-button .see-directory-btn{
+  width: 50%;
+  margin-left: 300px;
+  margin-top: 50px;
+}
 .right-button .emergency-btn {
-  width: 50%; /* Adjust button width to be the same as text below */
+  width: 50%;
+  margin-right: 300px; 
+  margin-top: 50px;/* Adjusted button width to be the same as text below */
+}
+
+/* Additional styles for text below buttons */
+.button-description {
+  text-align: justify;
+  font-size: 1rem; /* Adjusted text size below buttons */
+  width: 50%; /* Adjusted width to be the same as buttons */
+  margin-bottom: 3px;
+}
+
+.button-description-left {
+  margin-bottom: 3px; 
+  margin-left: 360px; /* Further reduced margin below button description */
+}
+
+.button-description-right {
+  margin-bottom: 3px; 
+  margin-left: 60px;/* Further reduced margin below button description */
 }

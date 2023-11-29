@@ -1,7 +1,7 @@
 // CallforHelp.js
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './CSS/CallforHelp.css'; // Import the CallforHelp specific CSS
+import './CSS/CallforHelp.css'; // Import the main CSS
 
 const CallforHelp = ({ handleLogout }) => {
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ const CallforHelp = ({ handleLogout }) => {
             <button className="see-directory-btn" onClick={() => navigate('/directory')}>
               <div className="button-text">See Directory</div>
             </button>
-            <div className="button-description">
+            <div className="button-description button-description-left">
               The RESPO Directory provides you with an extensive directory of emergency services, including hospitals, police stations, fire departments, and more. Access crucial contact details at your fingertips when you need them the most.
             </div>
           </div>
@@ -46,7 +46,7 @@ const CallforHelp = ({ handleLogout }) => {
             <button className="emergency-btn" onClick={() => navigate('/emergency')}>
               <div className="button-text">Emergency</div>
             </button>
-            <div className="button-description">
+            <div className="button-description button-description-right">
               When seconds matter the most, "Emergency" provides a one-tap solution to alert authorities, emergency services, and your selected contacts. Instantly send out distress signals, ensuring help is on its way.
             </div>
           </div>
