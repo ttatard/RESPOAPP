@@ -41,7 +41,7 @@ const CallforHelp = ({ handleLogout }) => {
             <div className="button-description button-description-left">
               The RESPO Directory provides you with an extensive directory of emergency services, including hospitals, police stations, fire departments, and more. Access crucial contact details at your fingertips when you need them the most.
             </div>
-          </div>
+            </div>
           <div className="right-button">
             <button className="emergency-btn" onClick={() => navigate('/emergency')}>
               <div className="button-text">Emergency</div>
