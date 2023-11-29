@@ -40,8 +40,8 @@
 .see-directory-btn,
 .emergency-btn {
   display: inline-block;
-  padding: 8px 16px; /* Adjust button padding */
-  margin-bottom: 10px; /* Adjust button margin */
+  padding: 12px 20px; /* Adjust button padding */
+  margin-bottom: 15px; /* Adjust button margin */
   border: none;
   text-decoration: none;
   color: black;
@@ -49,25 +49,32 @@
   border-radius: 5px;
   transition: background-color 0.3s, color 0.3s;
   width: 100%;
+  font-size: 1.2rem; /* Adjust button text size */
 }
 
-.see-directory-btn:hover,
-.emergency-btn:hover {
+.see-directory-btn:hover{
   background-color: #ccc;
   color: black;
+}
+.emergency-btn:hover {
+  background-color: red;
+  color: white;
 }
 
 /* Additional styles for text below buttons */
 .button-description {
   text-align: justify;
-  margin-bottom: 10px; /* Adjust margin below button description */
+  margin-bottom: 15px; /* Adjust margin below button description */
+  font-size: 1rem; /* Adjust text size below buttons */
+  width: 50%; /* Adjust the width to be the same as buttons */
+  margin-left: 25%; /* Remove left margin */
 }
 
 /* Additional styles for left and right buttons */
 .button-container {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px; /* Adjust margin between button containers */
+  margin-bottom: 15px; /* Adjust margin between button containers */
 }
 
 .left-button,
@@ -77,5 +84,5 @@
 
 .left-button .see-directory-btn,
 .right-button .emergency-btn {
-  width: 100%;
+  width: 50%; /* Adjust button width to be the same as text below */
 }

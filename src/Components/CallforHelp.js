@@ -52,8 +52,8 @@ const CallforHelp = ({ handleLogout }) => {
           </div>
         </div>
         <p className="centered-text compact-paragraph">
-          <br></br><br></br><br></br><br></br><br></br>
-          We want to bring an important matter to your attention. While RESPO is a platform designed to connect people in need with real and immediate assistance, it has come to our notice that there have been instances of fake or fraudulent requests circulating within our community. We want to emphasize the importance of staying vigilant and cautious while using our platform.
+          <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+          We want to bring an important matter to your attention. While RESPO is a platform designed to connect people in need with real and immediate assistance, it has come to our notice that <br></br>there have been instances of fake or fraudulent requests circulating within our community. We want to emphasize the importance of staying vigilant and cautious while using our platform.
         </p>
       </div>
     </div>
