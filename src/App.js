@@ -59,9 +59,8 @@ function App() {
             path="/dashboard"
             element={isLoggedIn ? <DashboardPage onLogout={handleLogout} /> : <Navigate to="/login" />}
           />
-          <Route path="/weather-update" element={<WeatherUpdate />} />
-          <Route path="/call-for-help" 
-                      element={<CallforHelp onLogout={handleLogout} />} />
+          <Route path="/weather-update" element={<WeatherUpdate onLogout={handleLogout} />} />
+          <Route path="/call-for-help" element={<CallforHelp onLogout={handleLogout} />} />
         </Routes>
       </div>
     </Router>
