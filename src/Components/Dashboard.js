@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './CSS/Dashboard.css'; // Import your CSS file
-import zartImage from './zart.png'; // Ensure the correct path to the image
-import CallforHelp from './CallforHelp'; 
+import zartImage from './zart.png'; // Ensure the correct path to the imag
 
 
 function Dashboard({ onLogout }) {
@@ -61,18 +60,11 @@ function Dashboard({ onLogout }) {
         trusted partner for immediate support.
         </p><br /><br />
 
-        <div className="callforhelp">
   {/* Other content */}
-  <div className="dashboard">
     <Link to="/call-for-help" className="get-started-btn">Get Started on Call for Help</Link>
     {/* Other content */}
-  </div>
-
-        
-
           <div className="extended-line"></div>
         
-        </div>
   </div>
 
   <div className="weatherupdate">
@@ -114,7 +106,6 @@ function Dashboard({ onLogout }) {
 
         </div><br /><br /><br />
   </div>
-  <CallforHelp handleLogout={handleLogout} />
   </div>  
   );
 }
