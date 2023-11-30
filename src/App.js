@@ -6,21 +6,17 @@ import LoginPage from './Components/Login';
 import CallforHelp from './Components/CallforHelp'; 
 import SignUpPage from './Components/SignUp';
 import DashboardPage from './Components/Dashboard';
-import WeatherUpdate from './Components/WeatherUpdate'; // Import WeatherUpdate component
+import WeatherUpdate from './Components/WeatherUpdate';
+import Directory from './Components/Directory'; // Import Directory component
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Function to handle successful login
   const handleLogin = () => {
-    // Perform your login logic here
-    // For demo, assuming successful login
     setIsLoggedIn(true);
   };
 
-  // Function to handle logout
   const handleLogout = () => {
-    // Perform logout logic here
     setIsLoggedIn(false);
   };
 
@@ -61,6 +57,7 @@ function App() {
           />
           <Route path="/weather-update" element={<WeatherUpdate onLogout={handleLogout} />} />
           <Route path="/call-for-help" element={<CallforHelp onLogout={handleLogout} />} />
+          <Route path="/directory" element={isLoggedIn ? <Directory /> : <Navigate to="/login" />} />
         </Routes>
       </div>
     </Router>

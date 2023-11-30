@@ -67,11 +67,7 @@ function Dashboard({ onLogout }) {
     <Link to="/call-for-help" className="get-started-btn">Get Started on Call for Help</Link>
     {/* Other content */}
   </div>
-
-        
-
-          <div className="extended-line"></div>
-        
+          <div className="extended-line"></div>       
         </div>
   </div>
 

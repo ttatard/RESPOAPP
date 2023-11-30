@@ -1,0 +1,56 @@
+/* SeeDirectory.css */
+
+.directory-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+  }
+  
+  .locations-container {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .locations-container h2 {
+    margin-bottom: 10px;
+  }
+  
+  .location-buttons {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .location-button {
+    margin: 5px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .location-button.active {
+    background-color: #ccc;
+    color: white;
+  }
+  
+  .departments-at-location {
+    flex: 2;
+  }
+  
+  .departments-at-location h2 {
+    margin-bottom: 10px;
+  }
+  
+  .departments-at-location ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .departments-at-location li {
+    margin-bottom: 8px;
+  }
+  
+  /* Adjust styles as needed */
+  
