@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function SignUpPage() {
+function AdminRegister() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [number, setNumber] = useState('');
@@ -71,7 +71,7 @@ function SignUpPage() {
           eMail: email,
           pWord: password,
           gender: gender, // Include the gender in the request body
-          isAdmin: false // Set isAdmin to false explicitly for regular user signup
+          isAdmin: true // Set isAdmin to true for admin registration
         })
       });
 
@@ -81,7 +81,7 @@ function SignUpPage() {
         // Handle signup failure, show error message, etc.
       }
     } catch (error) {
-      console.error('Error during signup:', error);
+      console.error('Error during admin signup:', error);
       // Handle signup error, show error message, etc.
     } finally {
       setShowConfirmation(false); // Close the confirmation dialog after signup attempt
@@ -97,15 +97,15 @@ function SignUpPage() {
     <div className="form-container">
       {showConfirmation && (
         <div className="confirmation-dialog">
-          <p>Are you sure you want to sign up?</p>
+          <p>Are you sure you want to sign up as admin?</p>
           <button onClick={confirmSignUp}>Yes</button>
           <button onClick={() => setShowConfirmation(false)}>No</button>
         </div>
       )}
       {showSuccessMessage ? (
         <div className="success-message">
-          <p>You have successfully registered! You may proceed to login to your account</p>
-          <button onClick={handleProceed}>Proceed</button>
+          <p>You have successfully registered as admin!</p>
+          <button onClick={handleProceed}>Proceed to Login</button>
         </div>
       ) : (
         <>
@@ -138,14 +138,6 @@ function SignUpPage() {
             />
           </div>
           <div className="form-group">
-            <label>Gender:</label>
-            <select className="gender-select" value={gender} onChange={handleGenderChange}>
-              <option disabled value="">Select a gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
-          </div>
-          <div className="form-group">
             <label>Email:</label>
             <input
               type="text"
@@ -153,6 +145,14 @@ function SignUpPage() {
               onChange={handleEmailChange}
               placeholder="Enter your email"
             />
+          </div>
+          <div className="form-group">
+            <label>Gender:</label>
+            <select className="gender-select" value={gender} onChange={handleGenderChange}>
+              <option disabled value="">Select a gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
           </div>
           <div className="form-group">
             <label>Password:</label>
@@ -164,7 +164,7 @@ function SignUpPage() {
             />
           </div>
           {passwordError && <p style={{ color: 'red', marginTop: '5px' }}>{passwordError}</p>}
-          <button onClick={handleSignUp}>Sign Up</button>
+          <button onClick={handleSignUp}>Sign Up as Admin</button>
           <br></br>
           <br></br>
           <p>
@@ -179,4 +179,4 @@ function SignUpPage() {
   );
 }
 
-export default SignUpPage;
+export default AdminRegister;

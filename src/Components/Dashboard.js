@@ -25,7 +25,6 @@ function Dashboard({ onLogout }) {
         <Link to="/call-for-help">Call for Help</Link>
         <Link to="/weather-update">Weather Update</Link>
         <Link to="/emergency-tutorials">Emergency Tutorials</Link>
-        <Link to="/AboutUs">About Us</Link>
         <button onClick={handleLogout}>Log Out</button>
       </nav>
 

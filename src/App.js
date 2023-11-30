@@ -9,6 +9,8 @@ import DashboardPage from './Components/Dashboard';
 import WeatherUpdate from './Components/WeatherUpdate';
 import Directory from './Components/Directory';
 import LandingPage from './Components/LandingPage';
+import AdminRegister from './Components/AdminRegister'; // Import your AdminRegister component here
+import AdminPage from './Components/AdminPage'; // Import your AdminPage component here
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -34,8 +36,10 @@ function App() {
                 isLoggedIn ? (
                   <Navigate to="/dashboard" />
                 ) : (
-                  <><h1>CREATE AN <span className="red-text">ACCOUNT</span></h1>
-                  <LoginPage onLogin={handleLogin} /></>
+                  <>
+                    <h1>LOG IN YOUR <span className="red-text">ACCOUNT</span></h1>
+                    <LoginPage onLogin={handleLogin} />
+                  </>
                 )
               }
             />
@@ -79,7 +83,18 @@ function App() {
                 )
               }
             />
+            <Route
+              path="/adminpage"
+              element={
+                isLoggedIn ? (
+                  <AdminPage />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
             <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/admin" element={<AdminRegister />} />
           </Routes>
         </div>
       </div>
