@@ -7,7 +7,8 @@ import CallforHelp from './Components/CallforHelp';
 import SignUpPage from './Components/SignUp';
 import DashboardPage from './Components/Dashboard';
 import WeatherUpdate from './Components/WeatherUpdate';
-import Directory from './Components/Directory'; // Import Directory component
+import Directory from './Components/Directory';
+import LandingPage from './Components/LandingPage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -26,39 +27,61 @@ function App() {
         <div className="header">
           <img src={logo} alt="Logo" className="logo" />
           <Routes>
-            <Route
-              path="/"
-              element={
-                isLoggedIn ? (
-                  <Navigate to="/dashboard" />
-                ) : (
-                  <h1>CREATE AN <span className="red-text">ACCOUNT</span></h1>
-                )
-              }
-            />
+            <Route path="/" element={<LandingPage />} />
             <Route
               path="/login"
               element={
                 isLoggedIn ? (
                   <Navigate to="/dashboard" />
                 ) : (
-                  <h1>LOGIN TO <span className="red-text">ACCOUNT</span></h1>
+                  <><h1>CREATE AN <span className="red-text">ACCOUNT</span></h1>
+                  <LoginPage onLogin={handleLogin} /></>
                 )
               }
             />
+            <Route
+              path="/dashboard"
+              element={
+                isLoggedIn ? (
+                  <DashboardPage onLogout={handleLogout} />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
+            <Route
+              path="/weather-update"
+              element={
+                isLoggedIn ? (
+                  <WeatherUpdate onLogout={handleLogout} />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
+            <Route
+              path="/call-for-help"
+              element={
+                isLoggedIn ? (
+                  <CallforHelp onLogout={handleLogout} />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
+            <Route
+              path="/directory"
+              element={
+                isLoggedIn ? (
+                  <Directory />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
+            <Route path="/signup" element={<SignUpPage />} />
           </Routes>
         </div>
-        <Routes>
-          <Route path="/" element={<SignUpPage />} />
-          <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
-          <Route
-            path="/dashboard"
-            element={isLoggedIn ? <DashboardPage onLogout={handleLogout} /> : <Navigate to="/login" />}
-          />
-          <Route path="/weather-update" element={<WeatherUpdate onLogout={handleLogout} />} />
-          <Route path="/call-for-help" element={<CallforHelp onLogout={handleLogout} />} />
-          <Route path="/directory" element={isLoggedIn ? <Directory /> : <Navigate to="/login" />} />
-        </Routes>
       </div>
     </Router>
   );
