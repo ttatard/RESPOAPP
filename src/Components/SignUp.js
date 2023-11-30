@@ -131,6 +131,14 @@ function SignUpPage() {
             />
           </div>
           <div className="form-group">
+            <label>Gender:</label>
+            <select className="gender-select">
+              <option disable selected hidden>Select a gender</option>
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+          </div>
+          <div className="form-group">
             <label>Email:</label>
             <input
               type="text"
