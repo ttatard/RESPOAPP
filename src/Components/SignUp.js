@@ -8,6 +8,9 @@ function SignUpPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [passwordError, setPasswordError] = useState('');
+  const [emptyFieldError, setEmptyFieldError] = useState('');
 
   const handleFirstNameChange = (e) => {
     setFirstName(e.target.value);
@@ -27,9 +30,29 @@ function SignUpPage() {
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+    setPasswordError(''); // Clear password error on input change
   };
 
-  const handleSignUp = async () => {
+  const handleSignUp = () => {
+    if (!firstName || !lastName || !number || !email || !password) {
+      setEmptyFieldError('Please fill in all fields');
+      return;
+    }
+
+    setEmptyFieldError('');
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!passwordRegex.test(password)) {
+      setPasswordError(
+        'Password must contain at least 8 characters, one uppercase letter, one lowercase letter, and one special character.'
+      );
+    } else {
+      setPasswordError('');
+      setShowConfirmation(true);
+    }
+  };
+
+  const confirmSignUp = async () => {
     try {
       const response = await fetch('http://localhost:8080/user/insertUser', {
         method: 'POST',
@@ -53,6 +76,8 @@ function SignUpPage() {
     } catch (error) {
       console.error('Error during signup:', error);
       // Handle signup error, show error message, etc.
+    } finally {
+      setShowConfirmation(false); // Close the confirmation dialog after signup attempt
     }
   };
 
@@ -63,6 +88,13 @@ function SignUpPage() {
 
   return (
     <div className="form-container">
+      {showConfirmation && (
+        <div className="confirmation-dialog">
+          <p>Are you sure you want to sign up?</p>
+          <button onClick={confirmSignUp}>Yes</button>
+          <button onClick={() => setShowConfirmation(false)}>No</button>
+        </div>
+      )}
       {showSuccessMessage ? (
         <div className="success-message">
           <p>You have successfully registered! You may proceed to login to your account</p>
@@ -70,6 +102,7 @@ function SignUpPage() {
         </div>
       ) : (
         <>
+          {emptyFieldError && <p style={{ color: 'red', marginTop: '5px' }}>{emptyFieldError}</p>}
           <div className="form-group">
             <label>First Name:</label>
             <input
@@ -115,6 +148,7 @@ function SignUpPage() {
               placeholder="Enter your Password"
             />
           </div>
+          {passwordError && <p style={{ color: 'red', marginTop: '5px' }}>{passwordError}</p>}
           <button onClick={handleSignUp}>Sign Up</button>
           <br></br>
           <br></br>
