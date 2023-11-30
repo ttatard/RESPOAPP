@@ -34,7 +34,7 @@ function App() {
                 isLoggedIn ? (
                   <Navigate to="/dashboard" />
                 ) : (
-                  <><h1>CREATE AN <span className="red-text">ACCOUNT</span></h1>
+                  <><h1>LOG IN YOUR <span className="red-text">ACCOUNT</span></h1>
                   <LoginPage onLogin={handleLogin} /></>
                 )
               }
