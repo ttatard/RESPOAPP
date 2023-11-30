@@ -19,7 +19,7 @@ function Dashboard({ onLogout }) {
         <Link to="/call-for-help">Call for Help</Link>
         <Link to="/weather-update">Weather Update</Link>
         <Link to="/emergency-tutorials">Emergency Tutorials</Link>
-        {userRole === 'admin' && <Link to="/admin">Admin Page</Link>}
+        {userRole === 'admin' && <Link to="/adminpage">Admin Page</Link>}
         <button onClick={handleLogout}>Log Out</button>
       </nav>
 
