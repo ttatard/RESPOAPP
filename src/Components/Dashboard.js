@@ -1,23 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './CSS/Dashboard.css'; // Import your CSS file
-import zartImage from './zart.png'; // Ensure the correct path to the imag
-
+import './CSS/Dashboard.css';
+import zartImage from './zart.png';
 
 function Dashboard({ onLogout }) {
   const navigate = useNavigate();
-  const [showConfirmation, setShowConfirmation] = useState(false);
+  const userRole = localStorage.getItem('userRole');
 
   const handleLogout = () => {
     onLogout();
-    // Redirect to the login page
     navigate('/login');
   };
-  
-  const handleWeatherUpdateClick = () => {
-    // Navigate to the Weather Update page when the button is clicked
-    navigate('/weather-update');
-  };
+
 
   return (
     <div className="dashboard">
@@ -25,6 +19,7 @@ function Dashboard({ onLogout }) {
         <Link to="/call-for-help">Call for Help</Link>
         <Link to="/weather-update">Weather Update</Link>
         <Link to="/emergency-tutorials">Emergency Tutorials</Link>
+        {userRole === 'admin' && <Link to="/admin">Admin Page</Link>}
         <button onClick={handleLogout}>Log Out</button>
       </nav>
 

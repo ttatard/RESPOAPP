@@ -26,6 +26,9 @@ function LoginPage({ onLogin }) {
           (u) => u.eMail === email && u.pWord === password
         );
         if (user) {
+          // Store user role in local storage
+          localStorage.setItem('userRole', user.isAdmin ? 'admin' : 'user');
+
           // If login successful, proceed to dashboard
           onLogin();
           navigate('/dashboard');

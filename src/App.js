@@ -9,6 +9,7 @@ import DashboardPage from './Components/Dashboard';
 import WeatherUpdate from './Components/WeatherUpdate';
 import Directory from './Components/Directory';
 import LandingPage from './Components/LandingPage';
+import AdminRegister from './Components/AdminRegister'; // Import your AdminRegister component here
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -80,6 +81,7 @@ function App() {
               }
             />
             <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/admin" element={<AdminRegister />} />
           </Routes>
         </div>
       </div>
