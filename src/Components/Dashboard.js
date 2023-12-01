@@ -32,7 +32,7 @@ function Dashboard({ onLogout }) {
       <div className="allyouneed">
   <p>Welcome!</p>
   <p className="respohead">ALL YOU NEED<br />IN <span style={{color: 'red'}}>RESPO</span></p><br />
-  <p className="description">
+  <p style={{ fontSize: '20px' }} className="description">
     In 2026, we aim to become Cebu's top service provider with our cutting-edge<br />
     emergency response app. Our goal is to help ensure the safety and well-being<br />
     of every resident and visitor in Cebu by providing a reliable and efficient<br />
@@ -50,7 +50,7 @@ function Dashboard({ onLogout }) {
 
   <div className="callforhelp">
         <br /><br /><p className="callforhead">CALL FOR <span style={{color: 'red'}}>HELP</span></p>
-        <p className="description">
+        <p style={{ fontSize: '20px' }} className="description">
         Your lifeline during critical moments. Our mission is simple yet essential: to streamline<br />
         communication to emergency services authorities, ensuring that help is just a call away<br />
         when you need it most. We understand that in emergencies, every second counts. With<br />
@@ -69,7 +69,7 @@ function Dashboard({ onLogout }) {
 
   <div className="weatherupdate">
         <br /><br /><p className="weatherhead">WEATHER <span style={{color: 'red'}}>UPDATE</span></p>
-        <p className="description">
+        <p style={{ fontSize: '20px' }} className="description">
         Your go-to source for all things weather-related! We are here to keep you informed,<br /> 
         prepared, and in the know about the latest weather conditions, forecasts, and <br />
         meteorological insights. With our real-time updates and expert analysis, you can stay <br />
@@ -87,7 +87,7 @@ function Dashboard({ onLogout }) {
 
         <div className="emergencytutorials">
         <br /><br /><p className="emergencyhead">EMERGENCY <span style={{ color: 'red' }}>TUTORIALS</span></p>
-        <p className="description">
+        <p style={{ fontSize: '20px' }} className="description">
         Our step-by-step guides and expert insights will walk you through the procedures, <br />
         providing you with the confidence and know-how to handle emergencies with a level head. <br />
         We believe that knowledge is the key to resilience, and our tutorials are your key to being <br />
