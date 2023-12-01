@@ -26,12 +26,16 @@ const CallforHelp = ({ handleLogout }) => {
   return (
     <div className="callforhelp-container">
       <nav className="dashboard-nav">
+      <img src="/Components/Images/logo.png" alt="Logo" className="logo" />
         <Link to="/call-for-help" className="dashboard-link">Call for Help</Link>
         <button onClick={handleWeatherUpdateClick} className="dashboard-button">Weather Update</button>
         <button onClick={handleEmergencyTutorialsClick} className="dashboard-button">Emergency Tutorials</button>
         <button onClick={handleLogoutClick} className="dashboard-button">Log Out</button>
+      
       </nav>
       <div className="call-for-help">
+        {/* Insert the image here */}
+
         <h1 className="call-for-help-title">CALL FOR <span className="red-text">HELP</span></h1>
         <div className="button-container">
           <div className="left-button">
@@ -41,7 +45,7 @@ const CallforHelp = ({ handleLogout }) => {
             <div className="button-description button-description-left">
               The RESPO Directory provides you with an extensive directory of emergency services, including hospitals, police stations, fire departments, and more. Access crucial contact details at your fingertips when you need them the most.
             </div>
-            </div>
+          </div>
           <div className="right-button">
             <button className="emergency-btn" onClick={() => navigate('/emergency')}>
               <div className="button-text">Emergency</div>
