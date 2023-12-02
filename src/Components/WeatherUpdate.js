@@ -1,7 +1,7 @@
 // WeatherUpdate.js
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './CSS/WeatherUpdate.css';
 
 const api = {
@@ -77,6 +77,7 @@ const WeatherUpdate = ({ onLogout }) => {
   return (
     <div>
         <nav className="dashboard-nav">
+        <img src="/Components/Images/logo.png" alt="Logo" className="logo" />
         <Link to="/call-for-help" className="dashboard-link">Call for Help</Link>
         <Link to="/weather-update" className="dashboard-link">Weather Update</Link>
         <Link to="/emergency-tutorials" className="dashboard-link">Emergency Tutorials</Link>
