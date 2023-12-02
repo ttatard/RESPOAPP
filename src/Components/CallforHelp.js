@@ -26,7 +26,7 @@ const CallforHelp = ({ handleLogout }) => {
   return (
     <div className="callforhelp-container">
       <nav className="dashboard-nav">
-      <img src="/Components/Images/logo.png" alt="Logo" className="logo" />
+      
         <Link to="/call-for-help" className="dashboard-link">Call for Help</Link>
         <button onClick={handleWeatherUpdateClick} className="dashboard-button">Weather Update</button>
         <button onClick={handleEmergencyTutorialsClick} className="dashboard-button">Emergency Tutorials</button>
