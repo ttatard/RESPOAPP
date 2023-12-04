@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './CSS/Dashboard.css'; // Import your CSS file
 import zart from './Images/Dashboard1/zart.png';
@@ -9,19 +9,17 @@ import picture3 from './Images/Dashboard1/picture3.png';
 import line1 from './Images/Dashboard1/line1.png';
 import circle from './Images/Dashboard1/circle.png';
 
-function Dashboard({ onLogout }) {
-    const navigate = useNavigate();
-    const [showConfirmation, setShowConfirmation] = useState(false);
-    const userRole = localStorage.getItem('userRole'); // Fetch user role from local storage
-  
-    const handleLogout = () => {
-      onLogout();
-      // Redirect to the login page
-      navigate('/login');
-    };
-}
 
-export const Dashboard1 = () => {
+export const Dashboard1 = ({ onLogout }) => {
+    const navigate = useNavigate();
+    const userRole = localStorage.getItem('userRole'); // Fetch user role from local storage
+
+    const handleLogout = () => {
+        onLogout();
+        localStorage.removeItem('userRole');
+        navigate('/login');
+    };
+
     return (
         <div className="home">
             <div className="div">
@@ -137,7 +135,7 @@ export const Dashboard1 = () => {
                 <Link to="/emergency-tutorials">
                 <button className="text-wrapper-14">Emergency Tutorials</button>
                 </Link>
-                <button className="text-wrapper-15">Log-out</button>
+                <button className="text-wrapper-15" onClick={handleLogout}>Log-out</button>
             </div>
         </div>
     );
