@@ -1,134 +1,609 @@
-.dashboard-nav a{
-  display: inline-block;
-  padding: 10px 20px;
-  margin: 130px;
-  border: none;
-  text-decoration: none;
-  color: black;
-  background-color: #e1e1e1;
-  border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
-}
-.dashboard-nav button {
-  display: inline-block;
-  padding: 10px 20px;
-  margin: 5px;
-}
-
-/* Style for hover effect */
-.dashboard-nav a:hover,
-.dashboard-nav button:hover {
-  background-color: red;
-  color: white;
-}
-
-.description {
-    font-size: 5px;
-}
-
-.allyouneed {
-  width: 100% ; /* Adjust the width as needed */
-  text-align: left; /* Align text to the left within the div */
-  position: relative;
-  margin-left: 0rem;
-}
-
-.respohead {
-    font-size: 85px;
-    font-weight: bold;
-}
-
-.callforhead {
-    font-size: 70px;
-    font-weight: bold;
-}
-
-.weatherhead {
-    font-size: 70px;
-    font-weight: bold;
-}
-
-.emergencyhead {
-    font-size: 70px;
-    font-weight: bold;
-}
-
-.scroll-line {
-  width: 100%;
-  height: 1px;
-  background-color: #000; /* Change the color as needed */
-  position: absolute;
-  bottom: -10px; /* Adjust this value to position the line precisely */
-  left: 3;
-}
-
-.callforhelp {
-  width: 90%; /* Adjust the width as needed */
-  text-align: right; /* Align text to the left within the div */
-  position: relative;
-}
-
-.weatherupdate {
-  width: 90%; /* Adjust the width as needed */
-  text-align: left; /* Align text to the left within the div */
-  position: relative;
-}
-
-.emergencytutorials{
-  width: 90%; /* Adjust the width as needed */
-  text-align: right; /* Align text to the left within the div */
-  position: relative;
-}
-
-.extended-line {
-  height: 1px;
-  background-color: black;
-  width: 100%; /* Extend the line across the container */
-}
-
-.third-line {
-  height: 1px;
-  background-color: black;
-  width: 100%; /* Extend the line across the container */
-}
-
-.footer {
-    background-color: #f2f2f2; /* Grey background color */
-    padding: 20px; /* Adjust padding as needed */
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    left: 0;
-  
-  }
-  
-  .footer-content {
+.home {
+    background-color: #ffffff;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: black; /* Font color */
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .footer-left {
-    text-align: left;
-  }
-  
-  .footer-right {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.home .div {
+    background-color: #ffffff;
+    height: 3431px;
+    position: relative;
+    width: 1920px;
+}
+
+.home .overlap {
+    height: 627px;
+    left: 0;
+    position: absolute;
+    top: 209px;
+    width: 1920px;
+}
+
+.home .text-wrapper {
+    color: #000000;
+    font-family: "Inter-Light", Helvetica;
+    font-size: 23px;
+    font-weight: 300;
+    height: 29px;
+    left: 77px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 505px;
+    width: 267px;
+}
+
+.home .text-wrapper-2 {
+    color: #000000;
+    font-family: "Inter-Medium", Helvetica;
+    font-size: 30px;
+    font-weight: 500;
+    height: 31px;
+    left: 85px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 21px;
+    white-space: nowrap;
+    width: 142px;
+}
+
+@font-face {
+    font-family: 'Bebas Neue-Regular';
+    src: url('../Images/Dashboard1/BebasNeue-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.home .all-you-need-in {
+    color: transparent;
+    font-family: "Bebas Neue-Regular", Helvetica;
+    font-size: 128px;
+    font-weight: 400;
+    height: 268px;
+    left: 50px;
+    letter-spacing: 0;
+    line-height: 117.1px;
+    position: absolute;
+    text-shadow: 0px 4px 4px #00000040;
+    top: 87px;
+    width: 584px;
+}
+
+.home .span {
+    color: #000000;
+}
+
+.home .text-wrapper-3 {
+    color: #c30101;
+}
+
+.home .in-we-aim-to {
+    color: transparent;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 18px;
+    font-weight: 400;
+    height: 118px;
+    left: 85px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: justify;
+    top: 338px;
+    width: 676px;
+}
+
+.home .overlap-group {
+    height: 627px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1920px;
+}
+
+.home .zart {
+    height: 624px;
+    left: 1192px;
+    position: absolute;
+    top: 0;
+    width: 703px;
+}
+
+.home .line {
+    height: 3px;
+    left: 0;
+    position: absolute;
+    top: 624px;
+    width: 1920px;
+}
+
+.home .your-lifeline-during {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 18px;
+    font-weight: 400;
+    height: 150px;
+    left: 258px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: justify;
+    top: 1163px;
+    width: 760px;
+}
+
+.home .p {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 18px;
+    font-weight: 400;
+    height: 107px;
+    left: 811px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
     text-align: right;
-  }
+    top: 1982px;
+    width: 771px;
+}
 
-  .zart-image {
-    width: 500px; /* Increase the width */
-    height: auto; /* Maintain aspect ratio */
-    float: right; /* Position the image to the right */
-    margin-top: -450px; /* Move the image higher by adjusting the top margin */
-    /* Additional styles for the image */
-  }
+.home .our-step-by-step {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 18px;
+    font-weight: 400;
+    height: 142px;
+    left: 253px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 2836px;
+    width: 780px;
+}
 
-  body {
-    overflow-x: hidden;
-  }
+.home .CALL-FOR-HELP {
+    color: transparent;
+    font-family: "Bebas Neue-Regular", Helvetica;
+    font-size: 93px;
+    font-weight: 400;
+    height: 100px;
+    left: 258px;
+    letter-spacing: 0;
+    line-height: 85.1px;
+    position: absolute;
+    text-shadow: 0px 4px 4px #00000040;
+    top: 1021px;
+    white-space: nowrap;
+    width: 417px;
+}
 
-  
+.home .weather-update {
+    color: transparent;
+    font-family: "Bebas Neue-Regular", Helvetica;
+    font-size: 93px;
+    font-weight: 400;
+    height: 110px;
+    left: 1089px;
+    letter-spacing: 0;
+    line-height: 85.1px;
+    position: absolute;
+    text-shadow: 0px 4px 4px #00000040;
+    top: 1863px;
+    width: 493px;
+}
+
+.home .emergency-tutorials {
+    color: transparent;
+    font-family: "Bebas Neue-Regular", Helvetica;
+    font-size: 80px;
+    font-weight: 400;
+    height: 79px;
+    left: 253px;
+    letter-spacing: 0;
+    line-height: 73.2px;
+    position: absolute;
+    text-shadow: 0px 4px 4px #00000040;
+    top: 2735px;
+    white-space: nowrap;
+    width: 569px;
+}
+
+.home .img {
+    height: 3px;
+    left: 2px;
+    position: absolute;
+    top: 1668px;
+    width: 1918px;
+}
+
+.home .line-2 {
+    height: 4px;
+    left: 2px;
+    position: absolute;
+    top: 2492px;
+    width: 1918px;
+}
+
+.home .line-3 {
+    height: 1px;
+    left: 0;
+    position: absolute;
+    top: 3333px;
+    width: 1920px;
+}
+
+.home .head-support-and {
+    height: 672px;
+    left: 1138px;
+    object-fit: cover;
+    position: absolute;
+    top: 904px;
+    width: 435px;
+}
+
+.home .aspot-weather {
+    height: 675px;
+    left: 258px;
+    object-fit: cover;
+    position: absolute;
+    top: 1738px;
+    width: 435px;
+}
+
+.home .group {
+    height: 42px;
+    left: 258px;
+    position: absolute;
+    top: 1403px;
+    width: 274px;
+}
+
+.home .overlap-group-2 {
+    height: 42px;
+    position: relative;
+    width: 270px;
+    background: transparent;
+    border: none;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Adding transition for color and transform */
+}
+
+.home .overlap-group-2:hover {
+    transform: scale(1.1);
+}
+
+.home .rectangle {
+    background-color: #d9d9d9;
+    border-radius: 20px;
+    height: 41px;
+    left: 0;
+    opacity: 0.5;
+    position: absolute;
+    top: 1px;
+    width: 270px;
+}
+
+.home .text-wrapper-4 {
+    color: #000000;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 15px;
+    font-weight: 600;
+    height: 23px;
+    left: 19px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: justify;
+    top: 13px;
+    width: 245px;
+}
+
+.home .ellipse {
+    height: 31px;
+    left: 233px;
+    position: absolute;
+    top: 6px;
+    width: 31px;
+}
+
+.home .text-wrapper-5 {
+    color: #ffffff;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 30px;
+    font-weight: 600;
+    height: 39px;
+    left: 233px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 5px;
+    width: 31px;
+}
+
+.home .text-wrapper-6 {
+    color: #000000;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 15px;
+    font-weight: 600;
+    height: 25px;
+    left: 45px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: justify;
+    top: 3371px;
+    width: 353px;
+}
+
+.home .text-wrapper-7 {
+    color: #000000;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 15px;
+    font-weight: 600;
+    height: 18px;
+    left: 1698px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: right;
+    top: 3376px;
+    white-space: nowrap;
+    width: 160px;
+}
+
+.home .overlap-wrapper {
+    height: 42px;
+    left: 1276px;
+    position: absolute;
+    top: 2167px;
+    width: 306px;
+}
+
+.home .overlap-2 {
+    height: 42px;
+    position: relative;
+    width: 302px;
+    background: transparent;
+    border: none;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Adding transition for color and transform */
+}
+
+.home .overlap-2:hover {
+    transform: scale(1.1);
+}
+
+.home .rectangle-2 {
+    background-color: #d9d9d9;
+    border-radius: 20px;
+    height: 41px;
+    left: 0;
+    opacity: 0.5;
+    position: absolute;
+    top: 1px;
+    width: 302px;
+}
+
+.home .text-wrapper-8 {
+    color: #000000;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 15px;
+    font-weight: 600;
+    height: 25px;
+    left: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: justify;
+    top: 13px;
+    width: 282px;
+}
+
+.home .ellipse-2 {
+    height: 31px;
+    left: 265px;
+    position: absolute;
+    top: 6px;
+    width: 31px;
+}
+
+.home .text-wrapper-9 {
+    color: #ffffff;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 30px;
+    font-weight: 600;
+    height: 39px;
+    left: 265px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 5px;
+    width: 31px;
+}
+
+.home .overlap-group-wrapper {
+    height: 42px;
+    left: 253px;
+    position: absolute;
+    top: 3055px;
+    width: 254px;
+}
+
+.home .overlap-3 {
+    height: 42px;
+    position: relative;
+    width: 250px;
+    background: transparent;
+    border: none;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Adding transition for color and transform */
+}
+
+.home .overlap-3:hover {
+    transform: scale(1.1);
+}
+
+.home .rectangle-3 {
+    background-color: #d9d9d9;
+    border-radius: 20px;
+    height: 41px;
+    left: 0;
+    opacity: 0.5;
+    position: absolute;
+    top: 1px;
+    width: 250px;
+}
+
+.home .text-wrapper-10 {
+    color: #000000;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 15px;
+    font-weight: 600;
+    height: 18px;
+    left: 21px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: justify;
+    top: 13px;
+    white-space: nowrap;
+    width: 229px;
+}
+
+.home .ellipse-3 {
+    height: 31px;
+    left: 212px;
+    position: absolute;
+    top: 6px;
+    width: 31px;
+}
+
+.home .text-wrapper-11 {
+    color: #ffffff;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 30px;
+    font-weight: 600;
+    height: 39px;
+    left: 212px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 5px;
+    width: 31px;
+}
+
+.home .learning-lead-image {
+    height: 675px;
+    left: 1147px;
+    object-fit: cover;
+    position: absolute;
+    top: 2580px;
+    width: 435px;
+}
+
+.home .inverted {
+    height: 74px;
+    left: 437px;
+    position: absolute;
+    top: 7px;
+    width: 101px;
+    background: transparent;
+    border: none;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.home .inverted:hover {
+    transform: scale(1.1);
+}
+
+.home .text-wrapper-12 {
+    color: #c30101;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    height: 24px;
+    left: 669px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 50px;
+    white-space: nowrap;
+    width: 121px;
+    background: transparent;
+    border: none;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.home .text-wrapper-12:hover {
+    transform: scale(1.1);
+}
+
+.home .text-wrapper-13 {
+    color: #c30101;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    height: 26px;
+    left: 864px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 50px;
+    background: transparent;
+    border: none;
+    width: 195px;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.home .text-wrapper-13:hover {
+    transform: scale(1.1);
+}
+
+.home .text-wrapper-14 {
+    color: #c30101;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    height: 26px;
+    left: 1100px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 50px;
+    background: transparent;
+    border: none;
+    width: 237px;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.home .text-wrapper-14:hover {
+    transform: scale(1.1);
+}
+
+.home .text-wrapper-15 {
+    color: #c30101;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    height: 24px;
+    left: 1379px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 50px;
+    background: transparent;
+    border: none;
+    white-space: nowrap;
+    width: 82px;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Adding transition for color and transform */
+}
+
+.home .text-wrapper-15:hover {
+    transform: scale(1.1);
+}

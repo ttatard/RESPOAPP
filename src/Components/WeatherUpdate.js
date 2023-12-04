@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './CSS/WeatherUpdate.css';
+import logo1 from './Images/Dashboard1/logo1.png';
 
 const api = {
   key: "962eb2dbdbbac1981f7fd74f9d3b538b",
@@ -76,7 +77,7 @@ const WeatherUpdate = ({ onLogout }) => {
 
   return (
     <div>
-        <nav className="dashboard-nav">
+    <nav className="dashboard-nav">
         <img src="/Components/Images/logo.png" alt="Logo" className="logo" />
         <Link to="/call-for-help" className="dashboard-link">Call for Help</Link>
         <Link to="/weather-update" className="dashboard-link">Weather Update</Link>

@@ -13,6 +13,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    padding-top: 100;
     border: 2px solid #000;
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -112,4 +113,108 @@ body {
     font-size: 16px;
     margin-bottom: 8px;
   }
-  
+
+  .text-wrapper-12 {
+    color: #c30101;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    height: 24px;
+    left: 669px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 50px;
+    white-space: nowrap;
+    width: 121px;
+    background: transparent;
+    border: none;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.text-wrapper-12:hover {
+    transform: scale(1.1);
+}
+
+.text-wrapper-13 {
+    color: #c30101;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    height: 26px;
+    left: 864px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 50px;
+    background: transparent;
+    border: none;
+    width: 195px;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.text-wrapper-13:hover {
+    transform: scale(1.1);
+}
+
+.text-wrapper-14 {
+    color: #c30101;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    height: 26px;
+    left: 1100px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 50px;
+    background: transparent;
+    border: none;
+    width: 237px;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.text-wrapper-14:hover {
+    transform: scale(1.1);
+}
+
+.text-wrapper-15 {
+    color: #c30101;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    height: 24px;
+    left: 1379px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 50px;
+    background: transparent;
+    border: none;
+    white-space: nowrap;
+    width: 82px;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Adding transition for color and transform */
+}
+
+.text-wrapper-15:hover {
+    transform: scale(1.1);
+}
+ 
+.inverted {
+  height: 74px;
+  left: 437px;
+  position: absolute;
+  top: 7px;
+  width: 101px;
+  background: transparent;
+  border: none;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.home .inverted:hover {
+  transform: scale(1.1);
+}
