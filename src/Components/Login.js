@@ -26,6 +26,9 @@ function LoginPage({ onLogin }) {
           (u) => u.eMail === email && u.pWord === password
         );
         if (user) {
+          // Store user role in local storage
+          localStorage.setItem('userRole', user.isAdmin ? 'admin' : 'user');
+
           // If login successful, proceed to dashboard
           onLogin();
           navigate('/dashboard');
@@ -68,7 +71,7 @@ function LoginPage({ onLogin }) {
       <br></br>
       <p>
         Do not have an account?{' '}
-        <Link to="/" className="signup-link">
+        <Link to="/signup" className="signup-link">
           Sign up here
         </Link>
       </p>
