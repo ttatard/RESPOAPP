@@ -22,6 +22,8 @@ function App() {
     setIsLoggedIn(false); // Set isLoggedIn to false upon logout or perform other logout-related tasks
   };
   
+  const userRole = localStorage.getItem('userRole');
+
   return (
     <Router>
       <div className="App">
@@ -40,7 +42,9 @@ function App() {
           <Route path="/call-for-help" element={<CallforHelp />} />
           <Route path="/weather-update" element={<WeatherUpdate />} />
           <Route path="/directory" element={<Directory />} />
-          <Route path="/adminpage" element={<AdminPage />} />
+          {userRole === 'admin' && (
+            <Route path="/adminpage" element={<AdminPage />} />
+          )}
           <Route path="/admin" element={<AdminRegister />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>

@@ -7,14 +7,18 @@
   .landing-page h1 {
     color: red;
     text-align: center;
-    font-size: 48px;
+    font-size: 5vw; /* Adjust font size using viewport width */
     font-weight: bold;
-    margin-top: 15%; /* Adjust this value to move the text lower */
-    margin-left: 600px; /* Add margin on the left */
+    margin-top: 20vh; /* Adjust margin using viewport height */
+    margin-left: 60%; /* Add margin on the left using percentage */
+    margin-right: 20%; /* Add margin on the right using percentage */
   }
   
   .buttons {
     text-align: center;
+    margin-top: 10vh; /* Adjust margin using viewport height */
+    margin-left: 65%; /* Add margin on the left using percentage */
+    margin-right: 20%; /* Add margin on the right using percentage */
   }
   
   .buttons a {
@@ -23,10 +27,10 @@
   
   .buttons button {
     color: black;
-    margin-left: 600px; /* Add margin on the left */
+    margin-left: 10px; /* Add margin on the left */
     margin-right: 10px; /* Add margin on the right */
-    background-color: white; /* Change the background color to white */
-    border: 1px solid black; /* Add border to the buttons */
+    background-color: white;
+    border: 1px solid black;
   }
   
   .buttons button:first-child {
@@ -34,20 +38,21 @@
   }
   
   .buttons button:last-child {
-    background-color: white; /* Change the background color to white */
-    border: 1px solid black; /* Add border to the buttons */
+    background-color: white;
+    border: 1px solid black;
+  }
+  
+  .scroll-down {
+    text-align: center;
+    margin-top: 5vh; /* Adjust margin using viewport height */
+    margin-left: 65%; /* Add margin on the left using percentage */
+    margin-right: 20%; /* Add margin on the right using percentage */
   }
   
   .about-us {
     display: none;
   }
-  
-  .scroll-down {
-    text-align: center;
-    margin-top: 50px;
-    margin-left: 600px; /* Add margin on the left */
-  }
-  
+
   .landing-page {
     text-align: center;
     background-image: url('../Images/landingpage.png');
@@ -58,15 +63,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Ensure the content is on top of the background */
-  }
-  
-  .landing-page h1 {
-    color: red;
-    text-align: center;
-    font-size: 48px;
-    font-weight: bold;
-    margin-top: 15%; /* Adjust this value to move the text lower */
-    margin-left: 600px; /* Add margin on the left */
+    z-index: -1;
   }
   
