@@ -1,17 +1,31 @@
 // LandingPage.js
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './CSS/LandingPage.css'; // Import the separated CSS file
 
 const LandingPage = () => {
+  const [showAboutUs, setShowAboutUs] = useState(false);
+
   const handleScroll = () => {
-    // Handle scrolling action to show 'About Us' section
-    // You can implement the scrolling functionality here
+    const scrollPosition = window.scrollY;
+    const aboutUsSection = document.querySelector('.about-us');
+
+    if (scrollPosition > aboutUsSection.offsetTop - window.innerHeight / 2) {
+      setShowAboutUs(true);
+    } else {
+      setShowAboutUs(false);
+    }
   };
 
+  // Attach the scroll event listener
+  React.useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="landing-page">
+    <div className={`landing-page ${showAboutUs ? 'scroll-active' : ''}`}>
       <h1>WELCOME</h1>
       <div className="buttons">
         <Link to="/login">
@@ -22,7 +36,7 @@ const LandingPage = () => {
         </Link>
       </div>
       {/* Implement the 'About Us' section here */}
-      <div className="about-us">
+      <div className={`about-us ${showAboutUs ? 'show' : ''}`}>
         <h2>About Us</h2>
         <p>Some information about your company or application...</p>
       </div>
