@@ -20,7 +20,7 @@
     background-image: url('../Images/teamedited.png');
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 130vh;
     position: absolute;
     top: 100vh; /* Position it below the landing page */
     left: 0;
@@ -40,7 +40,7 @@
   }
 
   .member {
-    margin-top: 100vh;
+    margin-top: 150vh;
     width: 25%;
     text-align: center;
     margin-bottom: 20px; /* Adjust the bottom margin to separate member items */
