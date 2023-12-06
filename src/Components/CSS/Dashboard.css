@@ -1,3 +1,26 @@
+.dashbord {
+    width: 100%;
+}
+
+.dashboard-nav {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  @media (max-width: 768px) {
+    /* Styles for smaller screens */
+    .dashboard-nav {
+      flex-direction: column;
+    }
+  }
+  
+  .respohead {
+    font-size: 2em; /* Adjust accordingly */
+  }
+  
+  
+  
+
 .home {
     background-color: #ffffff;
     display: flex;
@@ -109,6 +132,8 @@
     position: absolute;
     top: 0;
     width: 703px;
+    max-width: 100%;
+    object-fit: cover;
 }
 
 .home .line {
@@ -208,6 +233,7 @@
     top: 2735px;
     white-space: nowrap;
     width: 569px;
+    
 }
 
 .home .img {
@@ -607,3 +633,5 @@
 .home .text-wrapper-15:hover {
     transform: scale(1.1);
 }
+
+
