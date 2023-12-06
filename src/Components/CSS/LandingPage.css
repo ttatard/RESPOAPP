@@ -1,72 +1,70 @@
 /* LandingPage.css */
 
 .landing-page {
-    text-align: center;
-  }
-  
-  .landing-page h1 {
-    color: red;
-    text-align: center;
-    font-size: 48px;
-    font-weight: bold;
-    margin-top: 15%; /* Adjust this value to move the text lower */
-    margin-left: 600px; /* Add margin on the left */
-  }
-  
-  .buttons {
-    text-align: center;
-  }
-  
-  .buttons a {
-    text-decoration: none;
-  }
-  
-  .buttons button {
-    color: black;
-    margin-left: 600px; /* Add margin on the left */
-    margin-right: 10px; /* Add margin on the right */
-    background-color: white; /* Change the background color to white */
-    border: 1px solid black; /* Add border to the buttons */
-  }
-  
-  .buttons button:first-child {
-    background-color: white;
-  }
-  
-  .buttons button:last-child {
-    background-color: white; /* Change the background color to white */
-    border: 1px solid black; /* Add border to the buttons */
-  }
-  
-  .about-us {
-    display: none;
-  }
-  
-  .scroll-down {
-    text-align: center;
-    margin-top: 50px;
-    margin-left: 600px; /* Add margin on the left */
-  }
-  
-  .landing-page {
-    text-align: center;
-    background-image: url('../Images/landingpage.png');
-    background-size: cover;
-    background-position: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Ensure the content is on top of the background */
-  }
-  
-  .landing-page h1 {
-    color: red;
-    text-align: center;
-    font-size: 48px;
-    font-weight: bold;
-    margin-top: 15%; /* Adjust this value to move the text lower */
-    margin-left: 600px; /* Add margin on the left */
-  }
-  
+  text-align: center;
+  background-image: url('../Images/landingpage.png');
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Ensure the content is on top of the background */
+}
+
+.landing-page h1 {
+  color: red;
+  text-align: center;
+  font-size: 48px;
+  font-weight: bold;
+  margin-top: 15%; /* Adjust this value to move the text lower */
+  margin-left: 600px; /* Add margin on the left */
+}
+
+.buttons {
+  text-align: center;
+}
+
+.buttons a {
+  text-decoration: none;
+}
+
+.buttons button {
+  color: black;
+  margin-left: 600px; /* Add margin on the left */
+  margin-right: 10px; /* Add margin on the right */
+  background-color: white; /* Change the background color to white */
+  border: 1px solid black; /* Add border to the buttons */
+}
+
+.buttons button:first-child {
+  background-color: white;
+}
+
+.buttons button:last-child {
+  background-color: white; /* Change the background color to white */
+  border: 1px solid black; /* Add border to the buttons */
+}
+
+.about-us {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.about-us.show {
+  display: block;
+  opacity: 1;
+}
+
+.scroll-down {
+  text-align: center;
+  margin-top: 50px;
+  margin-left: 600px; /* Add margin on the left */
+}
+
+/* Add this class to make the background image visible when scrolling down */
+.landing-page.scroll-active {
+  background-image: url('../Images/teamedited.png');
+}
