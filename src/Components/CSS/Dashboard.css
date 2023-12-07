@@ -637,4 +637,27 @@
     transform: scale(1.1);
 }
 
+.home .text-wrapper-16 {
+    color: #c30101;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    height: 24px;
+    left: 1679px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 50px;
+    background: transparent;
+    border: none;
+    white-space: nowrap;
+    width: 82px;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Adding transition for color and transform */
+}
+
+.home .text-wrapper-15:hover {
+    transform: scale(1.1);
+}
+
 

@@ -47,6 +47,7 @@ export const CallForHelp1 = () => {
                     or fraudulent requests circulating within our community. We want to emphasize the importance of staying
                     vigilant and cautious while using our platform.
                 </p>
+                <nav>
                 <Link to="/dashboard">
                     <button className="inverted">
                         <img alt="Inverted" src={logo1} />
@@ -62,9 +63,12 @@ export const CallForHelp1 = () => {
                     <button className="text-wrapper-7">Emergency Tutorials</button>
                 </Link>
                 <button className="text-wrapper-8">Log-out</button>
-                <p className="text-wrapper-9">Copyright © 2023 RESPO Inc. All rights reserved</p>
-                <img className="line" alt="Line" src="line-7.svg" />
-                <div className="text-wrapper-10">Cebu City, Philippines</div>
+                </nav>
+                <footer>
+                    <p className="text-wrapper-9">Copyright © 2023 RESPO Inc. All rights reserved</p>
+                    <img className="line" alt="Line" src="line-7.svg" />
+                    <div className="text-wrapper-10">Cebu City, Philippines</div>
+                </footer>
             </div>
         </div>
     );
