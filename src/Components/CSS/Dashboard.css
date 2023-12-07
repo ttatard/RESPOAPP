@@ -20,6 +20,7 @@
   
   
   
+  
 
 .home {
     background-color: #ffffff;
@@ -93,6 +94,8 @@
     text-shadow: 0px 4px 4px #00000040;
     top: 87px;
     width: 584px;
+    text-align: left;
+    margin-left: 1.6%;
 }
 
 .home .span {

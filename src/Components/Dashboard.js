@@ -69,13 +69,19 @@ function Dashboard({ onLogout }) {
   </div>
 
   <div className="weatherupdate">
-        <br /><br /><p className="weatherhead">WEATHER <span style={{color: 'red'}}>UPDATE</span></p>
-        <p style={{ fontSize: '20px' }} className="description">
+    <br /><br />
+    <p className="weatherhead">
+        <span className="weather-black">WEATHER</span>
+        <span style={{ color: 'red' }}>UPDATE</span>
+    </p>
+    <p style={{ fontSize: '20px' }} className="description">
         Your go-to source for all things weather-related! We are here to keep you informed,<br /> 
         prepared, and in the know about the latest weather conditions, forecasts, and <br />
         meteorological insights. With our real-time updates and expert analysis, you can stay <br />
         ahead of the weather and make informed decisions for your daily activities.
-        </p><br /><br />
+    </p>
+    <br /><br />
+
 
   <div className="dashboard">
     <Link to="/weather-update" className="get-started-btn">Get Started on Weather Update</Link>
@@ -88,7 +94,7 @@ function Dashboard({ onLogout }) {
 
         <div className="emergencytutorials">
         <br /><br /><p className="emergencyhead">EMERGENCY <span style={{ color: 'red' }}>TUTORIALS</span></p>
-        <p style={{ fontSize: '20px' }} className="description">
+        <p style={{ fontSize: '20px', textAlign: 'left' }} className="description">
         Our step-by-step guides and expert insights will walk you through the procedures, <br />
         providing you with the confidence and know-how to handle emergencies with a level head. <br />
         We believe that knowledge is the key to resilience, and our tutorials are your key to being <br />
