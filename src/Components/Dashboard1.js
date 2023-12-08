@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './CSS/Dashboard.css'; // Import your CSS file
-import circle from './Images/Dashboard1/circle.png';
-import line1 from './Images/Dashboard1/line1.png';
+import zart from './Images/Dashboard1/zart.png';
 import logo1 from './Images/Dashboard1/logo1.png';
 import picture1 from './Images/Dashboard1/picture1.png';
 import picture2 from './Images/Dashboard1/picture2.png';
 import picture3 from './Images/Dashboard1/picture3.png';
-import zart from './Images/Dashboard1/zart.png';
+import line1 from './Images/Dashboard1/line1.png';
+import circle from './Images/Dashboard1/circle.png';
 
 
 export const Dashboard1 = ({ onLogout }) => {
@@ -19,9 +19,6 @@ export const Dashboard1 = ({ onLogout }) => {
         localStorage.removeItem('userRole');
         navigate('/login');
     };
-
-    const isAdmin = userRole === 'admin';
-    console.log("User Role:", userRole);
 
     return (
         <div className="home">
@@ -79,9 +76,10 @@ export const Dashboard1 = ({ onLogout }) => {
                     <span className="text-wrapper-3">HELP</span>
                 </p>
                 <p className="weather-update">
-                    <span className="text-wrapper-3">weather</span>
-                    <span className="span"> update</span>
-                </p>
+    <span style={{ color: 'black' }} className="span">WEATHER&nbsp;</span>
+    <span className="span"> update</span>
+</p>
+
                 <p className="emergency-tutorials">
                     <span className="span">emergency</span>
                     <span className="text-wrapper-3"> tutorials</span>
@@ -129,24 +127,16 @@ export const Dashboard1 = ({ onLogout }) => {
                         <img alt="Inverted" src={logo1} />
                     </button>
                 </Link>
-                <nav>
-                    <Link to="/call-for-help">
-                            <button className="text-wrapper-12">Call for Help</button>
-                    </Link>
-                    <Link to="/weather-update">
-                        <button className="text-wrapper-13">Weather Update</button>
-                    </Link>
-                    <Link to="/emergency-tutorials">
-                        <button className="text-wrapper-14">Emergency Tutorials</button>
-                    </Link>
-
-                    {isAdmin && (
-                    <Link to="/adminpage">
-                        <button className="text-wrapper-15">Admin Page</button>
-                    </Link>
-                    )}
-                    </nav>
-                <button className="text-wrapper-16" onClick={handleLogout}>Log-out</button>
+                <Link to="/call-for-help">
+                    <button className="text-wrapper-12">Call for Help</button>
+                </Link>
+                <Link to="/weather-update">
+                    <button className="text-wrapper-13">Weather Update</button>
+                </Link>
+                <Link to="/emergency-tutorials">
+                <button className="text-wrapper-14">Emergency Tutorials</button>
+                </Link>
+                <button className="text-wrapper-15" onClick={handleLogout}>Log-out</button>
             </div>
         </div>
     );
