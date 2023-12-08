@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import AdminPage from './Components/AdminPage'; // Import your AdminPage component here
+import AdminRegister from './Components/AdminRegister';
 import './Components/CSS/Respo.css';
 import CallforHelp from './Components/CallforHelp';
 import Dashboard from './Components/Dashboard1';
@@ -43,6 +44,7 @@ function App() {
           <Route path="/weather-update" element={<WeatherUpdate />} />
           <Route path="/directory" element={<Directory />} />
           <Route path="/adminpage" element={<AdminPage />} />
+          <Route path="/admin" element={<AdminRegister />} />
           <Route path="/signup" element={<SignUp />}  />
         </Routes>
       </div>
