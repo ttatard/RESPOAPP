@@ -96,7 +96,7 @@ export const WeatherUpdate1 = ({ onLogout }) => {
                 <nav>
                     <button className="text-wrapper-5">Log-out</button>
                 </nav>
-                <img className="line" alt="Line" src={line1} />
+               
             </div>
 
             {/* Weather content section */}
@@ -175,6 +175,7 @@ export const WeatherUpdate1 = ({ onLogout }) => {
 
             {/* Footer */}
             <footer>
+                 <img className="line" alt="Line" src={line1} />
                 <p className="p">Copyright © 2023 RESPO Inc. All rights reserved</p>
                 <div className="text-wrapper-6">Cebu City, Philippines</div>
             </footer>
