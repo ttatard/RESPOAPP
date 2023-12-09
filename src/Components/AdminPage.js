@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 function AdminPage() {
   const [selectedOption, setSelectedOption] = useState('Directory');
@@ -9,6 +9,8 @@ function AdminPage() {
     loc: '',
     pNum: ''
   });
+
+  const [userData, setUserData] = useState([]);
 
   const fetchData = async () => {
     try {
@@ -114,11 +116,6 @@ function AdminPage() {
     // Similar functions for update and delete for emergency tutorials
     const handleEmergencyUpdate = async (videoId, updatedData) => {
       try {
-        // Implement the update functionality using axios.put or your desired method
-        // For example:
-        // const response = await axios.put(`http://localhost:8080/tutorial/updateTutorial/${videoId}`, updatedData);
-        // console.log(response.data);
-        // fetchEmergencyData();
       } catch (error) {
         console.error('Error updating emergency tutorial:', error);
       }
@@ -126,11 +123,6 @@ function AdminPage() {
   
     const handleEmergencyDelete = async (videoId) => {
       try {
-        // Implement the delete functionality using axios.delete or your desired method
-        // For example:
-        // const response = await axios.delete(`http://localhost:8080/tutorial/deleteTutorial/${videoId}`);
-        // console.log(response.data);
-        // fetchEmergencyData();
       } catch (error) {
         console.error('Error deleting emergency tutorial:', error);
       }
@@ -142,76 +134,39 @@ function AdminPage() {
       }
     }, [selectedOption]);
 
-    return (
-      <>
-        {selectedOption === 'Emergency Tutorials' && (
-          <>
-            <h2>Emergency Tutorials</h2>
-            <form onSubmit={handleEmergencySubmit}>
-              <input
-                type="text"
-                name="title"
-                placeholder="Enter Title"
-                value={emergencyFormData.title}
-                onChange={handleEmergencyInputChange}
-              />
-              <input
-                type="text"
-                name="desc"
-                placeholder="Enter Description"
-                value={emergencyFormData.desc}
-                onChange={handleEmergencyInputChange}
-              />
-              <input
-                type="file"
-                accept="video/*"
-                onChange={handleEmergencyFileChange}
-              />
-              <button type="submit">Submit</button>
-            </form>
-
-            {/* Display emergency tutorials with video in a table */}
-          <table>
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Video</th> {/* Add a new table heading for video */}
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {emergencyData.map((item) => (
-                <tr key={item.videoId}>
-                  <td>{item.title}</td>
-                  <td>{item.desc}</td>
-                  {/* Display video using an embedded video player */}
-                  <td>
-                    {/* Ensure the video URL is set as the 'src' attribute */}
-                    <video width="320" height="240" controls>
-                      <source src={`http://localhost:8080${item.videoUrl}`} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  </td>
-                  {/* Add buttons for update and delete */}
-                  <td>
-                    <button onClick={() => handleEmergencyUpdate(item.videoId, /* updated data */)}>
-                      Update
-                    </button>
-                    <button onClick={() => handleEmergencyDelete(item.videoId)}>
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </>
-      )}
-    </>
-  );
-};
-
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/user/getAllUsers');
+        setUserData(response.data);
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    };
+  
+    const handleUpdateUser = async (userId, updatedUserData) => {
+      try {
+        const response = await axios.put(`http://localhost:8080/user/updateUser?userId=${userId}`, updatedUserData);
+        console.log(response.data);
+        fetchUsers();
+      } catch (error) {
+        console.error('Error updating user:', error);
+      }
+    };
+  
+    const handleDeleteUser = async (userId) => {
+      try {
+        const response = await axios.delete(`http://localhost:8080/user/deleteUser/${userId}`);
+        console.log(response.data);
+        fetchUsers();
+      } catch (error) {
+        console.error('Error deleting user:', error);
+      }
+    };
+  
+    useEffect(() => {
+      fetchData();
+      fetchUsers(); // Fetch user data when the component mounts
+    }, []);
 
   useEffect(() => {
     fetchData();
@@ -223,10 +178,48 @@ function AdminPage() {
       <div>
         <label>Select an option:</label>
         <select value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
+          <option value="Users">Users</option>
           <option value="Directory">Directory</option>
           <option value="Emergency Tutorials">Emergency Tutorials</option>
         </select>
       </div>
+      
+      {selectedOption === 'Users' && (
+        <>
+          <h2>Users</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                {/* Add other relevant columns */}
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {userData.map((user) => (
+                <tr key={user.userId}>
+                  {/* Display user information */}
+                  <td>{user.fName}</td>
+                  <td>{user.lName}</td>
+                  <td>{user.eMail}</td>
+                  {/* Add other relevant fields */}
+                  <td>
+                    {/* Buttons for updating and deleting users */}
+                    <button onClick={() => handleUpdateUser(user.userId, /* updated user data */)}>
+                      Update
+                    </button>
+                    <button onClick={() => handleDeleteUser(user.userId)}>
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      )}
 
       {selectedOption === 'Directory' && (
         <>
@@ -299,9 +292,73 @@ function AdminPage() {
         </>
       )}
 
-      <EmergencyTutorials />
-    </div>
+    {selectedOption === 'Emergency Tutorials' && (
+      <>
+        <h2>Emergency Tutorials</h2>
+        <form onSubmit={handleEmergencySubmit}>
+          <input
+            type="text"
+            name="title"
+            placeholder="Enter Title"
+            value={emergencyFormData.title}
+            onChange={handleEmergencyInputChange}
+          />
+          <input
+            type="text"
+            name="desc"
+            placeholder="Enter Description"
+            value={emergencyFormData.desc}
+            onChange={handleEmergencyInputChange}
+          />
+          <input
+            type="file"
+            accept="video/*"
+            onChange={handleEmergencyFileChange}
+          />
+          <button type="submit">Submit</button>
+        </form>
+
+        {/* Display emergency tutorials with video in a table */}
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Video</th> {/* Add a new table heading for video */}
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {emergencyData.map((item) => (
+            <tr key={item.videoId}>
+              <td>{item.title}</td>
+              <td>{item.desc}</td>
+              {/* Display video using an embedded video player */}
+              <td>
+                {/* Ensure the video URL is set as the 'src' attribute */}
+                <video width="320" height="240" controls>
+                  <source src={`http://localhost:8080${item.videoUrl}`} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </td>
+              {/* Add buttons for update and delete */}
+              <td>
+                <button onClick={() => handleEmergencyUpdate(item.videoId, /* updated data */)}>
+                  Update
+                </button>
+                <button onClick={() => handleEmergencyDelete(item.videoId)}>
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  )}
+
+</div>
   );
 }
-
+}
 export default AdminPage;
