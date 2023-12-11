@@ -1,14 +1,17 @@
+
+
 .weather-update {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
 }
 
 .weather-update .nav {
     background-color: #ffffff;
-    height: 1080px;
+    height: auto;
     position: relative;
     width: 1920px;
 }
@@ -25,7 +28,7 @@
     position: absolute;
     text-align: center;
     text-shadow: 0px 4px 4px #00000040;
-    top: 182px;
+    top: 202px;
     white-space: nowrap;
     width: 436px;
 }
@@ -144,7 +147,7 @@
     transform: scale(1.1);
 }
 
-.weather-update .line {
+.weather-update footer .line {
     height: 3px;
     left: 0;
     position: absolute;
@@ -152,7 +155,7 @@
     width: 1920px;
 }
 
-.weather-update .p {
+.weather-update footer .p {
     color: #000000;
     font-family: "Inter-SemiBold", Helvetica;
     font-size: 15px;
@@ -167,7 +170,7 @@
     width: 353px;
 }
 
-.weather-update .text-wrapper-6 {
+.weather-update footer .text-wrapper-6 {
     color: #000000;
     font-family: "Inter-SemiBold", Helvetica;
     font-size: 15px;
@@ -181,30 +184,50 @@
     top: 1023px;
     white-space: nowrap;
     width: 160px;
+
 }
 
-.weather-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+.weather-update .weather-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1; 
+  align-items: center;
+  max-width: 800px;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;/* Allow the content to grow and take up remaining space */
+}
 
-  .weather-content-container {
-    max-width: 800px;
-    padding: 20px;
-    text-align: center;
-  }
+.weather-update .weather-content-container {
+  max-width: 800px;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
+}
   
   
   .search-form {
     margin-bottom: 20px;
+    margin-top: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   }
   
   .search-form input[type="text"],
   .search-form button {
     padding: 10px;
     font-size: 16px;
+    margin-right: 10px;
+  }
+
+  .search-form button {
+    margin-left: 1px;
+    margin-top: 7px;
   }
   
   .weather-info {
@@ -213,6 +236,8 @@
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .weather-info h2 {
@@ -269,4 +294,4 @@
   .forecast-navigation button:hover {
     background-color: #a20000;
   }
-  
+
