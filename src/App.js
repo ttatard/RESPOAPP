@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import AdminPage from './Components/AdminPage'; // Import your AdminPage component here
+
 import AdminRegister from './Components/AdminRegister';
 import './Components/CSS/Respo.css';
 import CallforHelp from './Components/CallforHelp';
@@ -10,6 +10,7 @@ import LandingPage from './Components/LandingPage';
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import WeatherUpdate from './Components/WeatherUpdate1';
+import AdminPage from './Components/AdminPage'; // Import your AdminPage component here
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,6 +29,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
+          
           <Route path="/" element={<LandingPage />} />
 
           <Route path="/login" element={isLoggedIn ? 
@@ -43,7 +45,7 @@ function App() {
           <Route path="/call-for-help" element={<CallforHelp />} />
           <Route path="/weather-update" element={<WeatherUpdate />} />
           <Route path="/directory" element={<Directory />} />
-          <Route path="/adminpage" element={<AdminPage />} />
+          <Route path="/useradmin" element={<AdminPage />} />
           <Route path="/admin" element={<AdminRegister />} />
           <Route path="/signup" element={<SignUp />}  />
         </Routes>

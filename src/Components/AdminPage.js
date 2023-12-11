@@ -293,69 +293,9 @@ function AdminPage() {
       )}
 
     {selectedOption === 'Emergency Tutorials' && (
-      <>
-        <h2>Emergency Tutorials</h2>
-        <form onSubmit={handleEmergencySubmit}>
-          <input
-            type="text"
-            name="title"
-            placeholder="Enter Title"
-            value={emergencyFormData.title}
-            onChange={handleEmergencyInputChange}
-          />
-          <input
-            type="text"
-            name="desc"
-            placeholder="Enter Description"
-            value={emergencyFormData.desc}
-            onChange={handleEmergencyInputChange}
-          />
-          <input
-            type="file"
-            accept="video/*"
-            onChange={handleEmergencyFileChange}
-          />
-          <button type="submit">Submit</button>
-        </form>
+        <EmergencyTutorials />
+      )}
 
-        {/* Display emergency tutorials with video in a table */}
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Video</th> {/* Add a new table heading for video */}
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {emergencyData.map((item) => (
-            <tr key={item.videoId}>
-              <td>{item.title}</td>
-              <td>{item.desc}</td>
-              {/* Display video using an embedded video player */}
-              <td>
-                {/* Ensure the video URL is set as the 'src' attribute */}
-                <video width="320" height="240" controls>
-                  <source src={`http://localhost:8080${item.videoUrl}`} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </td>
-              {/* Add buttons for update and delete */}
-              <td>
-                <button onClick={() => handleEmergencyUpdate(item.videoId, /* updated data */)}>
-                  Update
-                </button>
-                <button onClick={() => handleEmergencyDelete(item.videoId)}>
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </>
-  )}
 
 </div>
   );

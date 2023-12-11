@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './CSS/Dashboard.css'; // Import your CSS file
+import './CSS/Dashboard.css'; 
 import circle from './Images/Dashboard1/circle.png';
 import line1 from './Images/Dashboard1/line1.png';
 import logo1 from './Images/Dashboard1/logo1.png';
@@ -142,7 +142,7 @@ export const Dashboard1 = ({ onLogout }) => {
                     </Link>
 
                     {isAdmin && (
-                    <Link to="/adminpage">
+                    <Link to="/useradmin">
                         <button className="text-wrapper-15">Admin Page</button>
                     </Link>
                     )}
