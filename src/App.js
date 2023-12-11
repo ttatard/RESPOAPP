@@ -10,7 +10,7 @@ import LandingPage from './Components/LandingPage';
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import WeatherUpdate from './Components/WeatherUpdate1';
-import AdminPage from './Components/AdminPage'; // Import your AdminPage component here
+import UserAdmin from './Components/UserAdmin';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -29,25 +29,29 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          
           <Route path="/" element={<LandingPage />} />
-
-          <Route path="/login" element={isLoggedIn ? 
-            (<Navigate to="/dashboard" />) : (
-                  <>
-                    <h1>LOG IN YOUR <span className="red-text">ACCOUNT</span></h1>
-                    <Login onLogin={handleLogin} />
-                  </>
-                )
-              }
-            />
+          <Route
+            path="/login"
+            element={
+              isLoggedIn ? (
+                <Navigate to="/dashboard" />
+              ) : (
+                <>
+                  <h1>
+                    LOG IN YOUR <span className="red-text">ACCOUNT</span>
+                  </h1>
+                  <Login onLogin={handleLogin} />
+                </>
+              )
+            }
+          />
           <Route path="/dashboard" element={<Dashboard onLogout={handleLogout} />} />
           <Route path="/call-for-help" element={<CallforHelp />} />
           <Route path="/weather-update" element={<WeatherUpdate />} />
           <Route path="/directory" element={<Directory />} />
-          <Route path="/useradmin" element={<AdminPage />} />
+          <Route path="/useradmin" element={<UserAdmin />} />
           <Route path="/admin" element={<AdminRegister />} />
-          <Route path="/signup" element={<SignUp />}  />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </div>
     </Router>
