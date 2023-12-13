@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import AdminPage from './Components/AdminPage'; // Import your AdminPage component here
+
 import AdminRegister from './Components/AdminRegister';
 import './Components/CSS/Respo.css';
 import CallforHelp from './Components/CallforHelp';
@@ -11,6 +11,7 @@ import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import WeatherUpdate from './Components/WeatherUpdate1';
 import EmergencyTut from './Components/EmergencyTutorial1';
+import UserAdmin from './Components/UserAdmin';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,21 +31,26 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<LandingPage />} />
-
-          <Route path="/login" element={isLoggedIn ? 
-            (<Navigate to="/dashboard" />) : (
-                  <>
-                    <h1>LOG IN YOUR <span className="red-text">ACCOUNT</span></h1>
-                    <Login onLogin={handleLogin} />
-                  </>
-                )
-              }
-            />
+          <Route
+            path="/login"
+            element={
+              isLoggedIn ? (
+                <Navigate to="/dashboard" />
+              ) : (
+                <>
+                  <h1>
+                    LOG IN YOUR <span className="red-text">ACCOUNT</span>
+                  </h1>
+                  <Login onLogin={handleLogin} />
+                </>
+              )
+            }
+          />
           <Route path="/dashboard" element={<Dashboard onLogout={handleLogout} />} />
           <Route path="/call-for-help" element={<CallforHelp />} />
           <Route path="/weather-update" element={<WeatherUpdate />} />
           <Route path="/directory" element={<Directory />} />
-          <Route path="/adminpage" element={<AdminPage />} />
+          <Route path="/useradmin" element={<UserAdmin />} />
           <Route path="/admin" element={<AdminRegister />} />
           <Route path="/signup" element={<SignUp />}  />
           <Route path="/emergency-tutorials" element={<EmergencyTut />}  />
