@@ -66,6 +66,7 @@
   
   .red-text {
     color: red;
+    white-space: nowrap; /* Add this line to prevent line breaks within the span */
   }
   
   .login-link {

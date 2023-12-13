@@ -96,9 +96,9 @@ function AdminRegister() {
   return (
     <div className="form-container">
        <h1> 
-          ADMIN <span class="red-text">REGISTRATION</span>
-          </h1>
-          
+        ADMIN <span className="red-text">REGISTRATION</span>
+        </h1>
+
       {showConfirmation && (
         <div className="confirmation-dialog">
           <p>Are you sure you want to sign up as admin?</p>
