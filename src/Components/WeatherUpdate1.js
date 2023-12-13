@@ -81,18 +81,26 @@ export const WeatherUpdate1 = ({ onLogout }) => {
                     <span className="text-wrapper">WEATHER </span>
                     <span className="span">UPDATE</span>
                 </p>
-                <button className="inverted">
-                    <img alt="Inverted" src={logo1} />
-                </button>
-                <nav>
-                    <button className="text-wrapper-2">Call for Help</button>
-                </nav>
-                <nav>
-                    <button className="text-wrapper-3" to="/weather-update">Weather Update</button>
-                </nav>
-                <nav>
-                    <button className="text-wrapper-4">Emergency Tutorials</button>
-                </nav>
+                <Link to="/dashboard">
+                    <button className="inverted">
+                        <img alt="Inverted" src={logo1} />
+                    </button>
+                </Link>
+                <Link to="/call-for-help">
+                    <nav>
+                        <button className="text-wrapper-2">Call for Help</button>
+                    </nav>
+                </Link>
+                <Link to="/weather-update">
+                    <nav>
+                        <button className="text-wrapper-3" to="/weather-update">Weather Update</button>
+                    </nav>
+                </Link>
+                <Link to="/emergency-tutorials">
+                    <nav>
+                        <button className="text-wrapper-4">Emergency Tutorials</button>
+                    </nav>
+                </Link>
                 <nav>
                     <button className="text-wrapper-5">Log-out</button>
                 </nav>

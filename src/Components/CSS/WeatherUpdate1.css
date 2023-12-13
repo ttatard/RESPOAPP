@@ -58,22 +58,22 @@
 
 
 .weather-update .text-wrapper-2 {
-    color: #c30101;
-    font-family: "Inter-SemiBold", Helvetica;
-    font-size: 20px;
-    font-weight: 600;
-    height: 24px;
-    left: 669px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    text-align: center;
-    top: 50px;
-    white-space: nowrap;
-    width: 121px;
-    background: transparent;
-    border: none;
-    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Adding transition for color and transform */
+  color: #c30101;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-size: 20px;
+  font-weight: 600;
+  height: 24px;
+  left: 669px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 50px;
+  white-space: nowrap;
+  width: 121px;
+  background: transparent;
+  border: none;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Adding transition for color and transform */
 }
 
 .weather-update .text-wrapper-2:hover {

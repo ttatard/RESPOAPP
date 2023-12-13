@@ -10,6 +10,7 @@ import LandingPage from './Components/LandingPage';
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import WeatherUpdate from './Components/WeatherUpdate1';
+import EmergencyTut from './Components/EmergencyTutorial1';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -46,6 +47,7 @@ function App() {
           <Route path="/adminpage" element={<AdminPage />} />
           <Route path="/admin" element={<AdminRegister />} />
           <Route path="/signup" element={<SignUp />}  />
+          <Route path="/emergency-tutorials" element={<EmergencyTut />}  />
         </Routes>
       </div>
     </Router>
