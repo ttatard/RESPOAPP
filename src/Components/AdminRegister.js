@@ -95,7 +95,7 @@ function AdminRegister() {
 
   return (
     <div className="form-container">
-      <h1> ADMIN <span className="red-text"> REGISTRATION </span></h1>
+      <h1> ADMIN <span className="red-text">REGISTRATION</span></h1>
         
 
       {showConfirmation && (
