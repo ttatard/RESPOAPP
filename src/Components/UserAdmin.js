@@ -23,32 +23,27 @@ const AdminDashboard = () => {
   const fetchDirectory = async () => {
     try {
       const response = await axios.get('http://localhost:8080/department/getAllDepartments');
+      console.log('Directory Data:', response.data); // Log the response to check its structure
       setData(response.data);
     } catch (error) {
       console.error('Error fetching directory: ', error);
     }
   };
+  
 
   const handleDeleteUser = async (userId) => {
     const confirmDelete = window.confirm("Are you sure you want to make this account inactive?");
     if (confirmDelete) {
       try {
-        // Prepare the updated user details with isDeleted set to true
-        const updatedUserDetails = {
-          isDeleted: true // Set the isDeleted field to true
-          // You can add other fields if needed or update specific fields here
-        };
-  
-        // Perform the update via API to set isDeleted to true
-        const response = await axios.put(`http://localhost:8080/user/updateUser?userId=${userId}`, updatedUserDetails);
-        console.log('User inactive: ', response.data);
-        fetchUsers(); // Refresh user data after making the account inactive
+        // Perform the delete operation via API
+        const response = await axios.delete(`http://localhost:8080/user/deleteUser/${userId}`);
+        console.log('User deleted: ', response.data);
+        fetchUsers(); // Refresh user data after deletion
       } catch (error) {
-        console.error('Error making account inactive: ', error);
+        console.error('Error deleting user: ', error);
       }
     }
   };
-  
 
   const handleSubmitDirectory = async (event) => {
     event.preventDefault();
@@ -215,7 +210,7 @@ const AdminDashboard = () => {
         </div>
       )}
 
-{selectedOption === 'Directory' && (
+    {selectedOption === 'Directory' && (
         <div>
           <h2>Directory Management</h2>
           <table>
@@ -230,15 +225,15 @@ const AdminDashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {data.map((directory) => (
-                <tr key={directory.DeptId}>
-                  <td>{directory.deptId}</td>
+            {data.map((directory) => (
+                <tr key={directory.deptId}>
+                  <td>{directory.deptId}</td> 
                   <td>{directory.deptName}</td>
                   <td>{directory.loc}</td>
                   <td>{directory.pNum}</td>
                   <td>{directory.isDeleted ? 'Deleted' : 'Active'}</td>
                   <td>
-                    <button onClick={() => handleDeleteDirectory(directory.deptId)}>Delete</button>
+                  <button onClick={() => handleDeleteDirectory(directory.deptId)}>Delete</button>
                   </td>
                 </tr>
               ))}
