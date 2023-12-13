@@ -95,6 +95,10 @@ function AdminRegister() {
 
   return (
     <div className="form-container">
+      <h1>
+         <span style={{ color: 'black' }}>REGISTER YOUR </span>
+         <span style={{ color: 'red' }}>ACCOUNT</span>
+          </h1>
       {showConfirmation && (
         <div className="confirmation-dialog">
           <p>Are you sure you want to sign up as admin?</p>
