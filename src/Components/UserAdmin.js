@@ -1,5 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { PDFDownloadLink, PDFViewer, Document, Page, Text } from '@react-pdf/renderer';
+
+
+const VideoPlayer = ({ videoId }) => {
+  const [videoUrl, setVideoUrl] = useState('');
+
+  useEffect(() => {
+    const fetchVideo = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/tutorial/getTutorial/${videoId}`, {
+          responseType: 'blob', // Set response type to blob
+        });
+
+        const blob = new Blob([response.data], { type: 'video/mp4' });
+        const videoURL = URL.createObjectURL(blob);
+        setVideoUrl(videoURL);
+      } catch (error) {
+        console.error('Error fetching video:', error);
+      }
+    };
+
+    fetchVideo();
+  }, [videoId]);
+
+  
+
+  return (
+    <div>
+      {videoUrl && (
+        <video controls width="320" height="240">
+          <source src={videoUrl} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      )}
+    </div>
+  );
+};
 
 const AdminDashboard = () => {
   const [selectedOption, setSelectedOption] = useState('');
@@ -8,8 +45,26 @@ const AdminDashboard = () => {
     DeptName: '',
     Loc: '',
     pNum: '',
-    isDeleted: false, // Set default value based on your logic
+    isDeleted: false,
   });
+  
+  const [newTutorial, setNewTutorial] = useState({ // Define newTutorial state
+    title: '',
+    description: '',
+    videoFile: null,
+  });
+
+  const [videoData, setVideoData] = useState([]); // Define videoData state
+
+  // Define fetchTutorials function
+  const fetchTutorials = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/tutorial/getAllTutorials');
+      setVideoData(response.data);
+    } catch (error) {
+      console.error('Error fetching tutorials: ', error);
+    }
+  };
 
   const fetchUsers = async () => {
     try {
@@ -84,22 +139,6 @@ const AdminDashboard = () => {
     }
   };
 
-  const [videoData, setVideoData] = useState([]);
-  const [newTutorial, setNewTutorial] = useState({
-    title: '',
-    description: '',
-    videoFile: null,
-  });
-
-  const fetchTutorials = async () => {
-    try {
-      const response = await axios.get('http://localhost:8080/tutorial/getAllTutorials');
-      setVideoData(response.data);
-    } catch (error) {
-      console.error('Error fetching tutorials: ', error);
-    }
-  };
-
   const handleSubmitTutorial = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -130,35 +169,29 @@ const AdminDashboard = () => {
     }
   }, [selectedOption]);
 
-  const VideoPlayer = ({ videoId }) => {
-    const [videoUrl, setVideoUrl] = useState('');
+
+  const ExportPDF = ({ data }) => {
+    const [pdfContent, setPdfContent] = useState([]);
   
     useEffect(() => {
-      const fetchVideo = async () => {
-        try {
-          const response = await axios.get(`http://localhost:8080/tutorial/getVideo/${videoId}`, {
-            responseType: 'blob' // Ensure correct response type
-          });
-  
-          const blob = response.data;
-          const url = URL.createObjectURL(blob);
-          setVideoUrl(url);
-        } catch (error) {
-          console.error('Error fetching video:', error);
-        }
-      };
-  
-      fetchVideo();
-    }, [videoId]);
-  
+      const content = data.map((item, index) => (
+        <Text key={index}>
+          {Object.values(item).join(' | ')}
+        </Text>
+      ));
+      setPdfContent(content);
+    }, [data]);
     return (
       <div>
-        {videoUrl && (
-          <video controls width="320" height="240">
-            <source src={videoUrl} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        )}
+        <PDFDownloadLink document={
+          <Document>
+            <Page>
+              {pdfContent}
+            </Page>
+          </Document>
+        } fileName="exported_data.pdf">
+          {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Export to PDF')}
+        </PDFDownloadLink>
       </div>
     );
   };
@@ -207,7 +240,10 @@ const AdminDashboard = () => {
               ))}
             </tbody>
           </table>
+          {data.length > 0 && <ExportPDF data={data} />}
         </div>
+
+        
       )}
 
     {selectedOption === 'Directory' && (
@@ -261,6 +297,7 @@ const AdminDashboard = () => {
             />
             <button type="submit">Add Directory</button>
           </form>
+          {data.length > 0 && <ExportPDF data={data} />}
         </div>
       )}
 

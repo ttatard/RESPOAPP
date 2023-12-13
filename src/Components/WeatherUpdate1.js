@@ -17,10 +17,6 @@ export const WeatherUpdate1 = ({ onLogout }) => {
         base: "https://api.openweathermap.org/data/2.5/",
       };
 
-      const handleLogout = () => {
-        onLogout();
-        navigate('/login');
-      };
     
       const searchWeather = async (e) => {
         e.preventDefault();
@@ -73,6 +69,12 @@ export const WeatherUpdate1 = ({ onLogout }) => {
         }
       };
 
+      const handleLogout = () => {
+        onLogout();
+        localStorage.removeItem('userRole');
+        navigate('/login');
+    };
+
       return (
         <div className="weather-update">
             <div className="nav">
@@ -102,7 +104,7 @@ export const WeatherUpdate1 = ({ onLogout }) => {
                     </nav>
                 </Link>
                 <nav>
-                    <button className="text-wrapper-5">Log-out</button>
+                    <button className="text-wrapper-5" >Log-out</button>
                 </nav>
                
             </div>
