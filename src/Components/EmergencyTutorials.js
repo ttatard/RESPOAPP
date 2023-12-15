@@ -1,38 +1,37 @@
-// EmergencyTutorials.js
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import './CSS/EmergencyTutorials.css'; // Import the main CSS
+import React from "react";
+import { Link } from "react-router-dom";
+import './CSS/EmergencyTutorial1.css'; // Import your CSS file
+import logo1 from './Images/Dashboard1/logo1.png';
 
-const EmergencyTutorials = ({ handleLogout }) => {
-  const navigate = useNavigate();
-
-const handleWeatherUpdateClick = () => {
-    navigate('/weather-update');
-  };
-
-  const handleEmergencyTutorialsClick = () => {
-    navigate('/emergency-tutorials');
-  };
-
-  const handleLogoutClick = () => {
-    if (typeof handleLogout === 'function') {
-      handleLogout();
-      navigate('/login');
-    } else {
-      console.error('handleLogout function is not defined');
-    }
-  };
-
-  return (
-    <div className="callforhelp-container">
-      <nav className="dashboard-nav">
-        <Link to="/call-for-help" className="dashboard-link">Call for Help</Link>
-        <button onClick={handleWeatherUpdateClick} className="dashboard-button">Weather Update</button>
-        <button onClick={handleEmergencyTutorialsClick} className="dashboard-button">Emergency Tutorials</button>
-        <button onClick={handleLogoutClick} className="dashboard-button">Log Out</button>
-      </nav>
-    </div>
-  );
+export const EmergencyTutorialss = () => {
+    return (
+        <div className="emergency">
+            <div className="div">
+                <p className="emergency-tutorials">
+                    <span className="text-wrapper">Emergency </span>
+                    <span className="span">Tutorials</span>
+                </p>
+                <Link to="/dashboard">
+                    <button className="inverted">
+                        <img alt="Inverted" src={logo1} />
+                    </button>
+                </Link>
+                <Link to="/call-for-help">
+                    <button className="text-wrapper-2">Call for Help</button>
+                </Link>
+                <Link to="/weather-update">
+                    <button className="text-wrapper-3">Weather Update</button>
+                </Link>
+                <Link to="/emergency-tutorials">
+                    <button className="text-wrapper-4">Emergency Tutorials</button>
+                </Link>
+                <button className="text-wrapper-5">Log-out</button>
+                <img className="line" alt="Line" src="line-7.svg" />
+                <p className="p">Copyright © 2023 RESPO Inc. All rights reserved</p>
+                <div className="text-wrapper-6">Cebu City, Philippines</div>
+            </div>
+        </div>
+    );
 };
 
-export default EmergencyTutorials;
+export default EmergencyTutorialss;

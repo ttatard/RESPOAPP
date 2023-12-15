@@ -208,6 +208,7 @@ const AdminDashboard = () => {
                     <span className="text-wrapper">Admin </span>
                     <span className="span">Dashboard</span>
                 </p>
+                <nav>
                 <Link to="/dashboard">
                     <button className="inverted">
                         <img alt="Inverted" src={logo1} />
@@ -226,9 +227,8 @@ const AdminDashboard = () => {
                 <img className="line" alt="Line" src="line-7.svg" />
                 <p className="p">Copyright © 2023 RESPO Inc. All rights reserved</p>
                 <div className="text-wrapper-6">Cebu City, Philippines</div>
-            </div>
-        </div>
-      <select onChange={(e) => setSelectedOption(e.target.value)}>
+                </nav>
+                <select onChange={(e) => setSelectedOption(e.target.value)}>
         <option value="">Select an option</option>
         <option value="Users">Users</option>
         <option value="Directory">Directory</option>
@@ -367,6 +367,10 @@ const AdminDashboard = () => {
         </div>
       )}
     </div>
+
+            </div>
+        </div>
+
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import './CSS/WeatherUpdate1.css';
+import './CSS/WeatherUpdate.css';
 import line1 from './Images/Dashboard1/line1.png';
 import logo1 from './Images/Dashboard1/logo1.png';
 
@@ -104,7 +104,7 @@ export const WeatherUpdate1 = ({ onLogout }) => {
                     </nav>
                 </Link>
                 <nav>
-                    <button className="text-wrapper-5" >Log-out</button>
+                    <button className="text-wrapper-5" onClick={handleLogout}>Log-out</button>
                 </nav>
                
             </div>
