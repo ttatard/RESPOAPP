@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { PDFDownloadLink, PDFViewer, Document, Page, Text } from '@react-pdf/renderer';
+import { Link } from "react-router-dom";
+import './CSS/EmergencyTutorial1.css'; // Import your CSS file
+import logo1 from './Images/Dashboard1/logo1.png';
+
 
 
 const VideoPlayer = ({ videoId }) => {
@@ -198,7 +202,32 @@ const AdminDashboard = () => {
 
   return (
     <div>
-      <h1>Admin Dashboard</h1>
+      <div className="emergency">
+            <div className="div">
+                <p className="emergency-tutorials">
+                    <span className="text-wrapper">Admin </span>
+                    <span className="span">Dashboard</span>
+                </p>
+                <Link to="/dashboard">
+                    <button className="inverted">
+                        <img alt="Inverted" src={logo1} />
+                    </button>
+                </Link>
+                <Link to="/call-for-help">
+                    <button className="text-wrapper-2">Call for Help</button>
+                </Link>
+                <Link to="/weather-update">
+                    <button className="text-wrapper-3">Weather Update</button>
+                </Link>
+                <Link to="/emergency-tutorials">
+                    <button className="text-wrapper-4">Emergency Tutorials</button>
+                </Link>
+                <button className="text-wrapper-5">Log-out</button>
+                <img className="line" alt="Line" src="line-7.svg" />
+                <p className="p">Copyright © 2023 RESPO Inc. All rights reserved</p>
+                <div className="text-wrapper-6">Cebu City, Philippines</div>
+            </div>
+        </div>
       <select onChange={(e) => setSelectedOption(e.target.value)}>
         <option value="">Select an option</option>
         <option value="Users">Users</option>
