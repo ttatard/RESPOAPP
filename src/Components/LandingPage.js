@@ -42,19 +42,23 @@ const LandingPage = () => {
         <div className="team-members">
           <div className="member">
             <img src={zartImage} alt="Zart" />
-            <p>Description about Zart</p>
+            <p>"In technology, we innovate for a safer community, 
+              turning crises into opportunities."<br></br><br></br>- Mike Lawrence Alpas</p>
           </div>
           <div className="member">
             <img src={kenImage} alt="Ken" />
-            <p>Description about Ken</p>
+            <p>"Code is a lifeline, ensuring technology 
+              serves humanity in critical moments."<br></br><br></br>- Kenneth Orland Ayade</p>
           </div>
           <div className="member">
             <img src={richardImage} alt="Richard" />
-            <p>Description about Richard</p>
+            <p>"Precision is paramount; we synchronize operations with care to 
+              safeguard our community."<br></br><br></br>- Richard Molina</p>
           </div>
           <div className="member">
             <img src={godwinImage} alt="Godwin" />
-            <p>Description about Godwin</p>
+            <p>"Envisioning a resilient community where unity transcends 
+              emergencies and stands the test of time."<br></br><br></br>- Godwin Sanjorjo</p>
           </div>
         </div>
       </div>

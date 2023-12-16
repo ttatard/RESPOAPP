@@ -1,5 +1,8 @@
 /* SeeDirectory.css */
 
+.emergency {
+  margin-bottom: 20px;
+}
 
 * {
   box-sizing: border-box;
@@ -13,6 +16,9 @@ body {
 }
 
 .directory-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 20px;
 }
 
@@ -22,19 +28,19 @@ body {
 
 .centered-table {
   width: 70%;
-  margin: 20px auto; /* Adjust margin for positioning */
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   padding: 20px; /* Add some padding for content spacing */
+  overflow-x: auto;
 }
 
 .footer {
-  text-align: center; /* Center the content */
+  text-align: center;
   margin-top: 20px; /* Adjust margin to create space between table and footer */
-  padding: 10px; /* Add padding for footer content */
-  background-color: #f0f0f0; /* Example background color */
-  border-top: 1px solid #ccc; /* Add a border at the top */
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-top: 1px solid #ccc;
 }
 
 /* Table styles */
@@ -74,5 +80,8 @@ tr:nth-child(even) {
 tr:hover {
   background-color: #f1f1f1;
 }
-
-
+.text-wrapper-6 {
+  margin-top: 10px; /* Add margin for spacing */
+  font-style: italic;
+  color: #666; /* Adjust text color */
+}

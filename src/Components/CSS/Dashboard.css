@@ -189,6 +189,7 @@
     position: absolute;
     top: 2836px;
     width: 780px;
+    text-align: left;
 }
 
 .home .CALL-FOR-HELP {
@@ -220,6 +221,7 @@
     text-shadow: 0px 4px 4px #00000040;
     top: 1863px;
     width: 493px;
+    background-color: transparent;
 }
 
 .home .emergency-tutorials {
