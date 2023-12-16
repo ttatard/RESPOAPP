@@ -4,13 +4,13 @@ import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-d
 import AdminRegister from './Components/AdminRegister';
 import './Components/CSS/Respo.css';
 import CallforHelp from './Components/CallforHelp';
-import Dashboard from './Components/Dashboard1';
+import Dashboard from './Components/Dashboard';
 import Directory from './Components/Directory';
 import LandingPage from './Components/LandingPage';
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
-import WeatherUpdate from './Components/WeatherUpdate1';
-import EmergencyTut from './Components/EmergencyTutorial1';
+import WeatherUpdate from './Components/WeatherUpdate';
+import EmergencyTutorials from './Components/EmergencyTutorials';
 import UserAdmin from './Components/UserAdmin';
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
     setIsLoggedIn(false); // Set isLoggedIn to false upon logout or perform other logout-related tasks
   };
   
-  const userRole = localStorage.getItem('userRole');
+  
 
   return (
     <Router>
@@ -53,7 +53,7 @@ function App() {
           <Route path="/useradmin" element={<UserAdmin />} />
           <Route path="/admin" element={<AdminRegister />} />
           <Route path="/signup" element={<SignUp />}  />
-          <Route path="/emergency-tutorials" element={<EmergencyTut />}  />
+          <Route path="/emergency-tutorials" element={<EmergencyTutorials />}  />
         </Routes>
       </div>
     </Router>
