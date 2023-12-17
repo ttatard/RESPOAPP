@@ -42,18 +42,8 @@ const SeeDirectory = () => {
             </Link>
               <button className="text-wrapper-5">Log-out</button>
           </nav>
-
-            <footer className="footer">
-                {/* Copyright and other elements */}
-              <img className="line" alt="Line" src="line-7.svg" />
-              <p className="p">Copyright © 2023 RESPO Inc. All rights reserved</p>
-              <div className="text-wrapper-6">Cebu City, Philippines</div>
-            </footer>
-          </div>
-      </div>
-
-      {/* Place the table container here, below "Contact Directory" */}
-      <div className="centered-table">
+ {/* Place the table container here, below "Contact Directory" */}
+ <div className="centered-table">
         <table>
           <thead>
             <tr>
@@ -72,6 +62,15 @@ const SeeDirectory = () => {
             ))}
           </tbody>
         </table>
+      </div>
+
+            <footer className="footer">
+                {/* Copyright and other elements */}
+              <img className="line" alt="Line" src="line-7.svg" />
+              <p className="p">Copyright © 2023 RESPO Inc. All rights reserved</p>
+              <div className="text-wrapper-6">Cebu City, Philippines</div>
+            </footer>
+          </div>
       </div>
               
       
