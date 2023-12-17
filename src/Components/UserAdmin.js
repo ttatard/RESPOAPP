@@ -1,46 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { PDFDownloadLink, PDFViewer, Document, Page, Text } from '@react-pdf/renderer';
-import { Link } from "react-router-dom";
-import './CSS/EmergencyTutorial1.css'; // Import your CSS file
+import { PDFDownloadLink, Document, Page, Text } from '@react-pdf/renderer';
+import { Link } from 'react-router-dom';
+import './CSS/EmergencyTutorial1.css';
 import logo1 from './Images/Dashboard1/logo1.png';
 
 
 
-const VideoPlayer = ({ videoId }) => {
-  const [videoUrl, setVideoUrl] = useState('');
-
-  useEffect(() => {
-    const fetchVideo = async () => {
-      try {
-        const response = await axios.get(`http://localhost:8080/tutorial/getTutorial/${videoId}`, {
-          responseType: 'blob', // Set response type to blob
-        });
-
-        const blob = new Blob([response.data], { type: 'video/mp4' });
-        const videoURL = URL.createObjectURL(blob);
-        setVideoUrl(videoURL);
-      } catch (error) {
-        console.error('Error fetching video:', error);
-      }
-    };
-
-    fetchVideo();
-  }, [videoId]);
-
-  
-
+const VideoPlayer = ({ videoContent }) => {
   return (
     <div>
-      {videoUrl && (
+      {videoContent && (
         <video controls width="320" height="240">
-          <source src={videoUrl} type="video/mp4" />
+          <source src={`data:video/mp4;base64,${videoContent}`} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       )}
     </div>
   );
 };
+
 
 const AdminDashboard = () => {
   const [selectedOption, setSelectedOption] = useState('');
@@ -63,12 +42,42 @@ const AdminDashboard = () => {
   // Define fetchTutorials function
   const fetchTutorials = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/tutorial/getAllTutorials');
+      const response = await axios.get('http://localhost:8080/tutorial/getAllTutorials/');
       setVideoData(response.data);
     } catch (error) {
       console.error('Error fetching tutorials: ', error);
     }
   };
+
+  const handleSubmitTutorial = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append('file', newTutorial.videoFile);
+    formData.append('title', newTutorial.title);
+    formData.append('description', newTutorial.description);
+
+    try {
+      await axios.post('http://localhost:8080/tutorial/insertTutorial', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      setNewTutorial({
+        title: '',
+        description: '',
+        videoFile: null,
+      });
+      fetchTutorials(); // Refresh tutorial data after adding
+    } catch (error) {
+      console.error('Error adding tutorial: ', error);
+    }
+  };
+
+  useEffect(() => {
+    if (selectedOption === 'Tutorials') {
+      fetchTutorials();
+    }
+  }, [selectedOption]);
 
   const fetchUsers = async () => {
     try {
@@ -143,36 +152,6 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleSubmitTutorial = async (event) => {
-    event.preventDefault();
-    const formData = new FormData();
-    formData.append('file', newTutorial.videoFile);
-    formData.append('title', newTutorial.title);
-    formData.append('description', newTutorial.description);
-
-    try {
-      await axios.post('http://localhost:8080/tutorial/insertTutorial', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      setNewTutorial({
-        title: '',
-        description: '',
-        videoFile: null,
-      });
-      fetchTutorials(); // Refresh tutorial data after adding
-    } catch (error) {
-      console.error('Error adding tutorial: ', error);
-    }
-  };
-
-  useEffect(() => {
-    if (selectedOption === 'Tutorials') {
-      fetchTutorials();
-    }
-  }, [selectedOption]);
-
 
   const ExportPDF = ({ data }) => {
     const [pdfContent, setPdfContent] = useState([]);
@@ -185,6 +164,7 @@ const AdminDashboard = () => {
       ));
       setPdfContent(content);
     }, [data]);
+
     return (
       <div>
         <PDFDownloadLink document={
@@ -330,7 +310,7 @@ const AdminDashboard = () => {
         </div>
       )}
 
-{selectedOption === 'Tutorials' && (
+  {selectedOption === 'Tutorials' && (
         <div>
           <h2>Video Tutorials</h2>
           <form onSubmit={handleSubmitTutorial}>
@@ -357,17 +337,16 @@ const AdminDashboard = () => {
 
           {/* Display video tutorials */}
           {videoData.map((tutorial) => (
-            <div key={tutorial.videoId}>
-              <h3>{tutorial.title}</h3>
-              <p>{tutorial.description}</p>
-              {/* Render VideoPlayer component for each tutorial */}
-              <VideoPlayer videoId={tutorial.videoId} />
-            </div>
+          <div key={tutorial.videoId}>
+          <h3>{tutorial.title}</h3>
+        <p>{tutorial.description}</p>
+        {/* Pass video content to VideoPlayer component */}
+        <VideoPlayer videoContent={tutorial.content} />
+        </div>
           ))}
         </div>
       )}
     </div>
-
             </div>
         </div>
 

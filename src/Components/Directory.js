@@ -62,18 +62,17 @@ const SeeDirectory = () => {
             ))}
           </tbody>
         </table>
-      </div>
-
-            <footer className="footer">
+      </div> 
+    </div>
+    <footer className="footer">
                 {/* Copyright and other elements */}
               <img className="line" alt="Line" src="line-7.svg" />
               <p className="p">Copyright © 2023 RESPO Inc. All rights reserved</p>
               <div className="text-wrapper-6">Cebu City, Philippines</div>
-            </footer>
-          </div>
-      </div>
+    </footer>   
+    </div>
               
-      
+    
     </div>
   );
 };

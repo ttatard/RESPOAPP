@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import AdminRegister from './Components/AdminRegister';
@@ -13,6 +13,7 @@ import WeatherUpdate from './Components/WeatherUpdate';
 import EmergencyTutorials from './Components/EmergencyTutorials';
 import UserAdmin from './Components/UserAdmin';
 
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -24,7 +25,9 @@ function App() {
     setIsLoggedIn(false); // Set isLoggedIn to false upon logout or perform other logout-related tasks
   };
   
-  
+  useEffect(() => {
+    document.title = "Respo";
+  }, []);
 
   return (
     <Router>
