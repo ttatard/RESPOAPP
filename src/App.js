@@ -12,6 +12,7 @@ import SignUp from './Components/SignUp';
 import WeatherUpdate from './Components/WeatherUpdate';
 import EmergencyTutorials from './Components/EmergencyTutorials';
 import UserAdmin from './Components/UserAdmin';
+import EmergCall from './Components/EmergCall';
 
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
           <Route path="/admin" element={<AdminRegister />} />
           <Route path="/signup" element={<SignUp />}  />
           <Route path="/emergency-tutorials" element={<EmergencyTutorials />}  />
+          <Route path="/emergency-calls" element={<EmergCall/>}  />
         </Routes>
       </div>
     </Router>

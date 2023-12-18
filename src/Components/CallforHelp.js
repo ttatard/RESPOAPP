@@ -36,7 +36,7 @@ export const CallForHelp1 = ({ onLogout }) => {
                 <div className="overlap-2">
                     <div className="rectangle" />
                     <div className="group">
-                        <Link to="/emergency">
+                        <Link to="/emergency-calls">
                             <button className="div-wrapper">
                                 <div className="text-wrapper-2">Emergency</div>
                             </button>
