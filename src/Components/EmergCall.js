@@ -5,6 +5,7 @@ import phone from './Images/Dashboard1/phone.png';
 import person from './Images/Dashboard1/person.png';
 import ambulance from './Images/Dashboard1/ambulance.gif';
 import logo from './Images/Dashboard1/logo1.png';
+import { Link, useNavigate } from "react-router-dom";
 
 
 export const EmergCall = () => {
@@ -28,12 +29,21 @@ export const EmergCall = () => {
                     <img className="icon-person" alt="Icon person" src={person} />
                     <div className="text-wrapper-4">Help ongoing</div>
                 </div>
-                <button className="inverted">
+
+                <Link to="/dashboard">
+                    <button className="inverted">
                         <img alt="Inverted" src={logo} />
                     </button>
-                <button className="text-wrapper-5">Call for Help</button>
-                <button className="text-wrapper-6">Weather Update</button>
-                <button className="text-wrapper-7">Emergency Tutorials</button>
+                </Link>
+                <Link to="/call-for-help">
+                    <button className="text-wrapper-5">Call for Help</button>
+                </Link>
+                <Link to="/weather-update">
+                    <button className="text-wrapper-6">Weather Update</button>
+                </Link>
+                <Link to="/emergency-tutorials">
+                    <button className="text-wrapper-7">Emergency Tutorials</button>
+                </Link>
                 <button className="text-wrapper-8">Log-out</button>
                 <div className="overlap-3">
                     <img className="line" alt="Line" src="line-7.svg" />
