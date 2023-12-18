@@ -80,9 +80,8 @@ export const Dashboard1 = ({ onLogout }) => {
                 </p>
 
                 <p className="weather-update">
-                    <span className="span">WEATHER </span>
-                    <span className="text-wrapper-3">UPDATE</span>
-                </p>
+  <span className="span">WEATHER <span style={{ color: ' #c30101' }}>UPDATE</span></span>
+</p>
 
 
                 <p className="emergency-tutorials">

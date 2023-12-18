@@ -662,3 +662,20 @@
     transform: scale(1.1);
 }
 
+/* Update the styles for WEATHER and UPDATE */
+.home .weather-update .span,
+.home .weather-update .text-wrapper-3 {
+    display: inline-block;
+}
+
+.home .weather-update .span {
+    color: #000000; /* Black color for "WEATHER" */
+}
+
+.home .weather-update .text-wrapper-3 {
+    color: #c30101; /* Red color for "UPDATE" */
+    margin-left: 10px; /* Adjust the margin as needed */
+}
+
+
+
