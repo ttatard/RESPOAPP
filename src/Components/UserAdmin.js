@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { PDFDownloadLink, Document, Page, Text } from '@react-pdf/renderer';
 import { Link } from 'react-router-dom';
-import './CSS/EmergencyTutorial1.css';
+import './CSS/UserAdmin.css';
 import logo1 from './Images/Dashboard1/logo1.png';
 
 
@@ -181,9 +181,9 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div>
+    <div className="admin-dashboard-container">
       <div className="emergency">
-            <div className="div">
+            <div className="dashboard-content">
                 <p className="emergency-tutorials">
                     <span className="text-wrapper">Admin </span>
                     <span className="span">Dashboard</span>
