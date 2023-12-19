@@ -1,6 +1,6 @@
 .emergency {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     height: 100vh;
@@ -154,8 +154,8 @@
 }
 
 .emergency video {
-    width: 640px;
-    height: 480px;
+    width: 500px;
+    height: 300px;
     margin-right: 20px; /* Add margin to create space between videos */
   }
   
@@ -197,28 +197,23 @@
     font-size: 28px; /* Adjust the font size as needed */
   }
   
-  .emergency .video-container {
+  .video-container {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-    margin-top: 50px; /* Add margin to separate videos from the content above */
+    justify-content: center; /* Add space between videos */
+    gap: 20px; /* Reduce the space between videos */
+    margin-top: 30px; /* Add margin to separate videos from the content above */
+    padding-right: 300px;
+    
   }
-
-
-  .emergency .video-item{
-    width: 100%;
+  
+  .emergency .video-item {
+    width: calc(33.33% - 10px); /* Set the width of each video item with reduced space in between */
     margin-bottom: 20px;
   }
+  
 
   .emergency .video-wrapper {
     margin-bottom: 10px;
   }
 
-  /* Add media query for smaller screens */
-@media screen and (max-width: 768px) {
-    .emergency .video-container {
-      flex-direction: column; /* Change to column for smaller screens */
-      align-items: center;
-    }
-}  
+
