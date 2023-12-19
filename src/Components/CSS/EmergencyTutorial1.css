@@ -154,8 +154,8 @@
 }
 
 .emergency video {
-    width: 500px;
-    height: 300px;
+    width: 400px;
+    height: 200px;
     margin-right: 20px; /* Add margin to create space between videos */
   }
   
@@ -200,7 +200,7 @@
   .video-container {
     display: flex;
     justify-content: center; /* Add space between videos */
-    gap: 20px; /* Reduce the space between videos */
+    gap: 15px; /* Reduce the space between videos */
     margin-top: 30px; /* Add margin to separate videos from the content above */
     padding-right: 300px;
     
