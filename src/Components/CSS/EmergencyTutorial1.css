@@ -29,7 +29,7 @@
     top: 209px;
     white-space: nowrap;
     width: 584px;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
 }
 
 .emergency .text-wrapper {
@@ -200,7 +200,25 @@
   .emergency .video-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-    margin-top: 20px; /* Add margin to separate videos from the content above */
+    gap: 20px;
+    margin-top: 50px; /* Add margin to separate videos from the content above */
   }
+
+
+  .emergency .video-item{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .emergency .video-wrapper {
+    margin-bottom: 10px;
+  }
+
+  /* Add media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .emergency .video-container {
+      flex-direction: column; /* Change to column for smaller screens */
+      align-items: center;
+    }
+}  
