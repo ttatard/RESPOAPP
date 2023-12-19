@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -95,6 +96,10 @@ function SignUpPage() {
 
   return (
     <div className="form-container">
+       <h1> 
+        CREATE <span className="red-text">ACCOUNT</span>
+        </h1>
+        
       {showConfirmation && (
         <div className="confirmation-dialog">
           <p>Are you sure you want to sign up?</p>

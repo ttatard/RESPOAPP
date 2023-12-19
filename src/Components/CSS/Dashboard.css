@@ -189,6 +189,7 @@
     position: absolute;
     top: 2836px;
     width: 780px;
+    text-align: left;
 }
 
 .home .CALL-FOR-HELP {
@@ -220,6 +221,7 @@
     text-shadow: 0px 4px 4px #00000040;
     top: 1863px;
     width: 493px;
+    background-color: transparent;
 }
 
 .home .emergency-tutorials {
@@ -659,4 +661,21 @@
 .home .text-wrapper-15:hover {
     transform: scale(1.1);
 }
+
+/* Update the styles for WEATHER and UPDATE */
+.home .weather-update .span,
+.home .weather-update .text-wrapper-3 {
+    display: inline-block;
+}
+
+.home .weather-update .span {
+    color: #000000; /* Black color for "WEATHER" */
+}
+
+.home .weather-update .text-wrapper-3 {
+    color: #c30101; /* Red color for "UPDATE" */
+    margin-left: 10px; /* Adjust the margin as needed */
+}
+
+
 

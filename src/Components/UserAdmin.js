@@ -1,5 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { PDFDownloadLink, Document, Page, Text } from '@react-pdf/renderer';
+import { Link } from 'react-router-dom';
+import './CSS/UserAdmin.css';
+import logo1 from './Images/Dashboard1/logo1.png';
+
+
+
+const VideoPlayer = ({ videoContent }) => {
+  return (
+    <div>
+      {videoContent && (
+        <video controls width="320" height="240">
+          <source src={`data:video/mp4;base64,${videoContent}`} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      )}
+    </div>
+  );
+};
+
 
 const AdminDashboard = () => {
   const [selectedOption, setSelectedOption] = useState('');
@@ -8,8 +28,56 @@ const AdminDashboard = () => {
     DeptName: '',
     Loc: '',
     pNum: '',
-    isDeleted: false, // Set default value based on your logic
+    isDeleted: false,
   });
+  
+  const [newTutorial, setNewTutorial] = useState({ // Define newTutorial state
+    title: '',
+    description: '',
+    videoFile: null,
+  });
+
+  const [videoData, setVideoData] = useState([]); // Define videoData state
+
+  // Define fetchTutorials function
+  const fetchTutorials = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/tutorial/getAllTutorials/');
+      setVideoData(response.data);
+    } catch (error) {
+      console.error('Error fetching tutorials: ', error);
+    }
+  };
+
+  const handleSubmitTutorial = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append('file', newTutorial.videoFile);
+    formData.append('title', newTutorial.title);
+    formData.append('description', newTutorial.description);
+
+    try {
+      await axios.post('http://localhost:8080/tutorial/insertTutorial', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      setNewTutorial({
+        title: '',
+        description: '',
+        videoFile: null,
+      });
+      fetchTutorials(); // Refresh tutorial data after adding
+    } catch (error) {
+      console.error('Error adding tutorial: ', error);
+    }
+  };
+
+  useEffect(() => {
+    if (selectedOption === 'Tutorials') {
+      fetchTutorials();
+    }
+  }, [selectedOption]);
 
   const fetchUsers = async () => {
     try {
@@ -23,32 +91,27 @@ const AdminDashboard = () => {
   const fetchDirectory = async () => {
     try {
       const response = await axios.get('http://localhost:8080/department/getAllDepartments');
+      console.log('Directory Data:', response.data); // Log the response to check its structure
       setData(response.data);
     } catch (error) {
       console.error('Error fetching directory: ', error);
     }
   };
+  
 
   const handleDeleteUser = async (userId) => {
     const confirmDelete = window.confirm("Are you sure you want to make this account inactive?");
     if (confirmDelete) {
       try {
-        // Prepare the updated user details with isDeleted set to true
-        const updatedUserDetails = {
-          isDeleted: true // Set the isDeleted field to true
-          // You can add other fields if needed or update specific fields here
-        };
-  
-        // Perform the update via API to set isDeleted to true
-        const response = await axios.put(`http://localhost:8080/user/updateUser?userId=${userId}`, updatedUserDetails);
-        console.log('User inactive: ', response.data);
-        fetchUsers(); // Refresh user data after making the account inactive
+        // Perform the delete operation via API
+        const response = await axios.delete(`http://localhost:8080/user/deleteUser/${userId}`);
+        console.log('User deleted: ', response.data);
+        fetchUsers(); // Refresh user data after deletion
       } catch (error) {
-        console.error('Error making account inactive: ', error);
+        console.error('Error deleting user: ', error);
       }
     }
   };
-  
 
   const handleSubmitDirectory = async (event) => {
     event.preventDefault();
@@ -89,89 +152,63 @@ const AdminDashboard = () => {
     }
   };
 
-  const [videoData, setVideoData] = useState([]);
-  const [newTutorial, setNewTutorial] = useState({
-    title: '',
-    description: '',
-    videoFile: null,
-  });
 
-  const fetchTutorials = async () => {
-    try {
-      const response = await axios.get('http://localhost:8080/tutorial/getAllTutorials');
-      setVideoData(response.data);
-    } catch (error) {
-      console.error('Error fetching tutorials: ', error);
-    }
-  };
-
-  const handleSubmitTutorial = async (event) => {
-    event.preventDefault();
-    const formData = new FormData();
-    formData.append('file', newTutorial.videoFile);
-    formData.append('title', newTutorial.title);
-    formData.append('description', newTutorial.description);
-
-    try {
-      await axios.post('http://localhost:8080/tutorial/insertTutorial', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      setNewTutorial({
-        title: '',
-        description: '',
-        videoFile: null,
-      });
-      fetchTutorials(); // Refresh tutorial data after adding
-    } catch (error) {
-      console.error('Error adding tutorial: ', error);
-    }
-  };
-
-  useEffect(() => {
-    if (selectedOption === 'Tutorials') {
-      fetchTutorials();
-    }
-  }, [selectedOption]);
-
-  const VideoPlayer = ({ videoId }) => {
-    const [videoUrl, setVideoUrl] = useState('');
+  const ExportPDF = ({ data }) => {
+    const [pdfContent, setPdfContent] = useState([]);
   
     useEffect(() => {
-      const fetchVideo = async () => {
-        try {
-          const response = await axios.get(`http://localhost:8080/tutorial/getVideo/${videoId}`, {
-            responseType: 'blob' // Ensure correct response type
-          });
-  
-          const blob = response.data;
-          const url = URL.createObjectURL(blob);
-          setVideoUrl(url);
-        } catch (error) {
-          console.error('Error fetching video:', error);
-        }
-      };
-  
-      fetchVideo();
-    }, [videoId]);
-  
+      const content = data.map((item, index) => (
+        <Text key={index}>
+          {Object.values(item).join(' | ')}
+        </Text>
+      ));
+      setPdfContent(content);
+    }, [data]);
+
     return (
       <div>
-        {videoUrl && (
-          <video controls width="320" height="240">
-            <source src={videoUrl} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        )}
+        <PDFDownloadLink document={
+          <Document>
+            <Page>
+              {pdfContent}
+            </Page>
+          </Document>
+        } fileName="exported_data.pdf">
+          {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Export to PDF')}
+        </PDFDownloadLink>
       </div>
     );
   };
 
   return (
-    <div>
-      <h1>Admin Dashboard</h1>
-      <select onChange={(e) => setSelectedOption(e.target.value)}>
+    <div className="admin-dashboard-container">
+      <div className="emergency">
+            <div className="dashboard-content">
+                <p className="emergency-tutorials">
+                    <span className="text-wrapper">Admin </span>
+                    <span className="span">Dashboard</span>
+                </p>
+                <nav>
+                <Link to="/dashboard">
+                    <button className="inverted">
+                        <img alt="Inverted" src={logo1} />
+                    </button>
+                </Link>
+                <Link to="/call-for-help">
+                    <button className="text-wrapper-2">Call for Help</button>
+                </Link>
+                <Link to="/weather-update">
+                    <button className="text-wrapper-3">Weather Update</button>
+                </Link>
+                <Link to="/emergency-tutorials">
+                    <button className="text-wrapper-4">Emergency Tutorials</button>
+                </Link>
+                <button className="text-wrapper-5">Log-out</button>
+                <img className="line" alt="Line" src="line-7.svg" />
+                <p className="p">Copyright © 2023 RESPO Inc. All rights reserved</p>
+                <div className="text-wrapper-6">Cebu City, Philippines</div>
+                </nav>
+                <select onChange={(e) => setSelectedOption(e.target.value)}>
         <option value="">Select an option</option>
         <option value="Users">Users</option>
         <option value="Directory">Directory</option>
@@ -212,10 +249,13 @@ const AdminDashboard = () => {
               ))}
             </tbody>
           </table>
+          {data.length > 0 && <ExportPDF data={data} />}
         </div>
+
+        
       )}
 
-{selectedOption === 'Directory' && (
+    {selectedOption === 'Directory' && (
         <div>
           <h2>Directory Management</h2>
           <table>
@@ -230,15 +270,15 @@ const AdminDashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {data.map((directory) => (
-                <tr key={directory.DeptId}>
-                  <td>{directory.deptId}</td>
+            {data.map((directory) => (
+                <tr key={directory.deptId}>
+                  <td>{directory.deptId}</td> 
                   <td>{directory.deptName}</td>
                   <td>{directory.loc}</td>
                   <td>{directory.pNum}</td>
                   <td>{directory.isDeleted ? 'Deleted' : 'Active'}</td>
                   <td>
-                    <button onClick={() => handleDeleteDirectory(directory.deptId)}>Delete</button>
+                  <button onClick={() => handleDeleteDirectory(directory.deptId)}>Delete</button>
                   </td>
                 </tr>
               ))}
@@ -266,10 +306,11 @@ const AdminDashboard = () => {
             />
             <button type="submit">Add Directory</button>
           </form>
+          {data.length > 0 && <ExportPDF data={data} />}
         </div>
       )}
 
-{selectedOption === 'Tutorials' && (
+  {selectedOption === 'Tutorials' && (
         <div>
           <h2>Video Tutorials</h2>
           <form onSubmit={handleSubmitTutorial}>
@@ -296,16 +337,19 @@ const AdminDashboard = () => {
 
           {/* Display video tutorials */}
           {videoData.map((tutorial) => (
-            <div key={tutorial.videoId}>
-              <h3>{tutorial.title}</h3>
-              <p>{tutorial.description}</p>
-              {/* Render VideoPlayer component for each tutorial */}
-              <VideoPlayer videoId={tutorial.videoId} />
-            </div>
+          <div key={tutorial.videoId}>
+          <h3>{tutorial.title}</h3>
+        <p>{tutorial.description}</p>
+        {/* Pass video content to VideoPlayer component */}
+        <VideoPlayer videoContent={tutorial.content} />
+        </div>
           ))}
         </div>
       )}
     </div>
+            </div>
+        </div>
+
   );
 };
 

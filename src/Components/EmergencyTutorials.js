@@ -1,38 +1,78 @@
-// EmergencyTutorials.js
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import './CSS/EmergencyTutorials.css'; // Import the main CSS
+import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import './CSS/EmergencyTutorial1.css';
+import logo1 from './Images/Dashboard1/logo1.png';
 
-const EmergencyTutorials = ({ handleLogout }) => {
-  const navigate = useNavigate();
-
-const handleWeatherUpdateClick = () => {
-    navigate('/weather-update');
-  };
-
-  const handleEmergencyTutorialsClick = () => {
-    navigate('/emergency-tutorials');
-  };
-
-  const handleLogoutClick = () => {
-    if (typeof handleLogout === 'function') {
-      handleLogout();
-      navigate('/login');
-    } else {
-      console.error('handleLogout function is not defined');
-    }
-  };
-
+const VideoPlayer = ({ videoContent }) => {
   return (
-    <div className="callforhelp-container">
-      <nav className="dashboard-nav">
-        <Link to="/call-for-help" className="dashboard-link">Call for Help</Link>
-        <button onClick={handleWeatherUpdateClick} className="dashboard-button">Weather Update</button>
-        <button onClick={handleEmergencyTutorialsClick} className="dashboard-button">Emergency Tutorials</button>
-        <button onClick={handleLogoutClick} className="dashboard-button">Log Out</button>
-      </nav>
+    <div>
+      {videoContent && (
+        <video controls width="640" height="480">
+          <source src={`data:video/mp4;base64,${videoContent}`} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      )}
     </div>
   );
 };
 
-export default EmergencyTutorials;
+const EmergencyTutorialss = () => {
+  const [videoData, setVideoData] = useState([]);
+
+  const fetchTutorials = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/tutorial/getAllTutorials/');
+      console.log('Video data:', response.data);
+      setVideoData(response.data);
+    } catch (error) {
+      console.error('Error fetching tutorials: ', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTutorials();
+  }, []);
+
+  return (
+    <div className="emergency">
+      <div className="div">
+        <p className="emergency-tutorials">
+          <span className="text-wrapper">Emergency </span>
+          <span className="span">Tutorials</span>
+        </p>
+        <Link to="/dashboard">
+          <button className="inverted">
+            <img alt="Inverted" src={logo1} />
+          </button>
+        </Link>
+        <Link to="/call-for-help">
+          <button className="text-wrapper-2">Call for Help</button>
+        </Link>
+        <Link to="/weather-update">
+          <button className="text-wrapper-3">Weather Update</button>
+        </Link>
+        <Link to="/emergency-tutorials">
+          <button className="text-wrapper-4">Emergency Tutorials</button>
+        </Link>
+        <button className="text-wrapper-5">Log-out</button>
+        <img className="line" alt="Line" src="line-7.svg" />
+        <p className="p">Copyright © 2023 RESPO Inc. All rights reserved</p>
+        <div className="text-wrapper-6">Cebu City, Philippines</div>
+      </div>
+      
+      {/* Render video player with the fetched video data */}
+      <div className="video-container">
+        {videoData.map((tutorial) => (
+          <div key={tutorial.videoId}>
+            <h2>{tutorial.title}</h2> {/* Make the title bigger */}
+            <VideoPlayer videoContent={tutorial.content} />
+            <p>{tutorial.description}</p> {/* Display the description below the video */}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default EmergencyTutorialss;
