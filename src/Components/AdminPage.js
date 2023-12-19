@@ -142,17 +142,7 @@ function AdminPage() {
         console.error('Error fetching users:', error);
       }
     };
-  
-    const handleUpdateUser = async (userId, updatedUserData) => {
-      try {
-        const response = await axios.put(`http://localhost:8080/user/updateUser?userId=${userId}`, updatedUserData);
-        console.log(response.data);
-        fetchUsers();
-      } catch (error) {
-        console.error('Error updating user:', error);
-      }
-    };
-  
+
     const handleDeleteUser = async (userId) => {
       try {
         const response = await axios.delete(`http://localhost:8080/user/deleteUser/${userId}`);
@@ -207,9 +197,6 @@ function AdminPage() {
                   {/* Add other relevant fields */}
                   <td>
                     {/* Buttons for updating and deleting users */}
-                    <button onClick={() => handleUpdateUser(user.userId, /* updated user data */)}>
-                      Update
-                    </button>
                     <button onClick={() => handleDeleteUser(user.userId)}>
                       Delete
                     </button>
