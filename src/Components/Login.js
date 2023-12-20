@@ -26,15 +26,20 @@ function LoginPage({ onLogin }) {
           (u) => u.eMail === email && u.pWord === password
         );
         if (user) {
-          // Store user role in local storage
-          localStorage.setItem('userRole', user.isAdmin ? 'admin' : 'user');
-
-          // If login successful, proceed to dashboard
-          onLogin();
-          navigate('/dashboard');
+          if (!user.isDeleted) { // Check if the user is not deleted
+            // Store user role in local storage
+            localStorage.setItem('userRole', user.isAdmin ? 'admin' : 'user');
+  
+            // If login successful, proceed to dashboard
+            onLogin();
+            navigate('/dashboard');
+          } else {
+            // Handle deleted account login attempt
+            setLoginError(true);
+          }
         } else {
           // Handle invalid credentials
-          setLoginError(true); // Set login error state to display the prompt
+          setLoginError(true);
         }
       } else {
         // Handle API error

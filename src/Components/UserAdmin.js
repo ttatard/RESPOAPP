@@ -30,6 +30,7 @@ const AdminDashboard = () => {
     pNum: '',
     isDeleted: false,
   });
+  const [deletedVideos, setDeletedVideos] = useState([]);
   
   const [newTutorial, setNewTutorial] = useState({ // Define newTutorial state
     title: '',
@@ -113,20 +114,46 @@ const AdminDashboard = () => {
     }
   };
 
+  const handleDeleteTutorial = async (videoId) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this tutorial?");
+    if (confirmDelete) {
+      try {
+        const response = await axios.delete(`http://localhost:8080/tutorial/deleteTutorial/${videoId}`);
+        console.log('Tutorial deleted: ', response.data);
+  
+        // Update the isDeleted status in the state
+        const updatedVideoData = videoData.map((tutorial) =>
+          tutorial.videoId === videoId ? { ...tutorial, isDeleted: true } : tutorial
+        );
+        setVideoData(updatedVideoData);
+  
+        fetchTutorials(); // Refresh tutorial data after deletion
+      } catch (error) {
+        console.error('Error deleting tutorial: ', error);
+      }
+    }
+  };
+
   const handleSubmitDirectory = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/department/insertDepartment', newDirectory);
-      console.log('New directory added: ', response.data);
-      setNewDirectory({
-        DeptName: '',
-        Loc: '',
-        pNum: '',
-        isDeleted: false,
-      });
-      fetchDirectory(); // Refresh directory data after adding
+      if (selectedDirectory) {
+        const response = await axios.put(`http://localhost:8080/department/updateDepartment/${selectedDirectory.deptId}`, selectedDirectory);
+        console.log('Directory updated: ', response.data);
+        setSelectedDirectory(null);
+      } else {
+        const response = await axios.post('http://localhost:8080/department/insertDepartment', newDirectory);
+        console.log('New directory added: ', response.data);
+        setNewDirectory({
+          DeptName: '',
+          Loc: '',
+          pNum: '',
+          isDeleted: false,
+        });
+      }
+      fetchDirectory(); // Refresh directory data after adding or updating
     } catch (error) {
-      console.error('Error adding directory: ', error);
+      console.error('Error adding or updating directory: ', error);
     }
   };
 
@@ -151,6 +178,14 @@ const AdminDashboard = () => {
       }
     }
   };
+
+  const [selectedDirectory, setSelectedDirectory] = useState(null);
+
+  // Function to handle updating directory
+  const handleUpdateDirectory = (directory) => {
+    setSelectedDirectory(directory);
+  };
+
 
 
   const ExportPDF = ({ data }) => {
@@ -208,19 +243,18 @@ const AdminDashboard = () => {
                
                </div>
                 </nav>
-                
-                <div className="dashboard-controls">
-                <select onChange={(e) => setSelectedOption(e.target.value)}>
-        <option value="">Select an option</option>
-        <option value="Users">Users</option>
-        <option value="Directory">Directory</option>
-        <option value="Tutorials">Tutorials</option>
-      </select>
-      <button onClick={selectedOption === 'Users' ? fetchUsers : fetchDirectory}>Show Data</button>
-      </div>
+
+            <div className="dashboard-controls">
+              <select onChange={(e) => setSelectedOption(e.target.value)}>
+                <option value="">Select an option</option>
+                <option value="Users">Users</option>
+                <option value="Directory">Directory</option>
+                <option value="Tutorials">Tutorials</option>
+              </select>
+              </div>
 
       {selectedOption === 'Users' && (
-        <div className = "usertable">
+        <div className="usertable" > {/* Add margin-top */}
           <h2>User Management</h2>
           <table>
             <thead>
@@ -254,12 +288,10 @@ const AdminDashboard = () => {
           </table>
           {data.length > 0 && <ExportPDF data={data} />}
         </div>
-
-        
       )}
 
     {selectedOption === 'Directory' && (
-        <div className ="directorytable">
+        <div className="directorytable" style={{ marginTop: '400px' }}> {/* Add margin-top */}
           <h2>Directory Management</h2>
           <table>
             <thead>
@@ -281,40 +313,54 @@ const AdminDashboard = () => {
                   <td>{directory.pNum}</td>
                   <td>{directory.isDeleted ? 'Deleted' : 'Active'}</td>
                   <td>
+                  <button onClick={() => handleUpdateDirectory(directory)}>Update</button>
                   <button onClick={() => handleDeleteDirectory(directory.deptId)}>Delete</button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <form onSubmit={handleSubmitDirectory}>
-            {/* Form to add new directory */}
+          <form onSubmit={selectedDirectory ? handleSubmitDirectory : handleSubmitDirectory}>
             <input
               type="text"
               placeholder="Department Name"
-              value={newDirectory.deptName}
-              onChange={(e) => setNewDirectory({ ...newDirectory, deptName: e.target.value })}
+              value={selectedDirectory ? selectedDirectory.deptName : newDirectory.deptName}
+              onChange={(e) =>
+                setSelectedDirectory
+                  ? setSelectedDirectory({ ...selectedDirectory, deptName: e.target.value })
+                  : setNewDirectory({ ...newDirectory, deptName: e.target.value })
+              }
             />
             <input
               type="text"
               placeholder="Location"
-              value={newDirectory.loc}
-              onChange={(e) => setNewDirectory({ ...newDirectory, loc: e.target.value })}
+              value={selectedDirectory ? selectedDirectory.loc : newDirectory.loc}
+              onChange={(e) =>
+                setSelectedDirectory
+                  ? setSelectedDirectory({ ...selectedDirectory, loc: e.target.value })
+                  : setNewDirectory({ ...newDirectory, loc: e.target.value })
+              }
             />
             <input
               type="text"
               placeholder="Contact Information"
-              value={newDirectory.pNum}
-              onChange={(e) => setNewDirectory({ ...newDirectory, pNum: e.target.value })}
+              value={selectedDirectory ? selectedDirectory.pNum : newDirectory.pNum}
+              onChange={(e) =>
+                setSelectedDirectory
+                  ? setSelectedDirectory({ ...selectedDirectory, pNum: e.target.value })
+                  : setNewDirectory({ ...newDirectory, pNum: e.target.value })
+              }
             />
-            <button type="submit">Add Directory</button>
+            <button type="submit">
+              {selectedDirectory ? 'Update Directory' : 'Add Directory'}
+            </button>
           </form>
           {data.length > 0 && <ExportPDF data={data} />}
         </div>
       )}
 
   {selectedOption === 'Tutorials' && (
-        <div className="tutorials-section">
+        <div className="tutorials-section" style={{ marginTop: '100px' }}> {/* Add margin-top */}
           <h2>Video Tutorials</h2>
           <form onSubmit={handleSubmitTutorial}>
             {/* Form to add new tutorial */}
@@ -341,20 +387,24 @@ const AdminDashboard = () => {
           {/* Display video tutorials */}
           <div className="video-container">
           {videoData.map((tutorial) => (
-          <div key={tutorial.videoId} className="video-item">
-          <h3>{tutorial.title}</h3>
-        <p>{tutorial.description}</p>
-        {/* Pass video content to VideoPlayer component */}
-        <VideoPlayer videoContent={tutorial.content} 
-      />
-        </div>
-          ))}
+  <div key={tutorial.videoId} className="video-item">
+    <h3>{tutorial.title}</h3>
+    <p>{tutorial.description}</p>
+    {/* Pass video content to VideoPlayer component */}
+    <VideoPlayer videoContent={tutorial.content} />
+    {tutorial.isDeleted ? (
+      <p>Deleted: {String(tutorial.isDeleted)}</p>
+    ) : (
+      <button onClick={() => handleDeleteTutorial(tutorial.videoId)}>Delete</button>
+    )}
+  </div>
+))}
         </div>
         </div>
       )}
     </div>
-            </div>
-        </div>
+  </div>
+</div>
 
   );
 };

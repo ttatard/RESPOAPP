@@ -65,14 +65,22 @@ const EmergencyTutorialss = () => {
       {/* Render video player with the fetched video data */}
       <div className="video-container">
         {/* Display video tutorials */}
-        {videoData.map((tutorial, index) => (
-          <div key={tutorial.videoId} className="video-item">
-            <h3>{tutorial.title}</h3>
-            <p>{tutorial.description}</p>
-            {/* Pass video content to VideoPlayer component */}
-            <VideoPlayer videoContent={tutorial.content} />
-          </div>
-        ))}
+
+        {videoData.map((tutorial, index) => {
+  // Only render if the tutorial is not marked as deleted
+  if (!tutorial.is_deleted) {
+    return (
+      <div key={tutorial.videoId} className="video-item">
+        <h3>{tutorial.title}</h3>
+        <p>{tutorial.description}</p>
+        {/* Pass video content to VideoPlayer component */}
+        <VideoPlayer videoContent={tutorial.content} />
+      </div>
+    );
+  }
+  return null; // If the tutorial is marked as deleted, return null to avoid rendering
+})}
+
       </div>
     </div>
   );

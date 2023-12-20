@@ -235,17 +235,21 @@
   }
 
   .dashboard-controls {
-    margin-top: 20%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: absolute;
+    top: 290px; /* Adjust the top position as needed */
+    left: 950px; /* Adjust the left position as needed */
+    z-index: 999;
+
   }
   
   .usertable {
-    margin-bottom: 54%;
-    margin-top: 1%;
+    position: absolute;
+    top: 290px;
+    left: 490px;
   }
 
   .directorytable {
-    margin-bottom: 50%;
+    position: absolute;
+    top: 1px;
+    left: 500px;
   }

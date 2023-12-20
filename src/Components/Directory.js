@@ -12,10 +12,13 @@ const SeeDirectory = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log('Fetched data:', data);
-        setDepartments(data);
+        // Filter out deleted departments
+        const filteredDepartments = data.filter((department) => !department.is_deleted);
+        setDepartments(filteredDepartments);
       })
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
+
 
   return (
     <div className="directory-container">
@@ -61,6 +64,7 @@ const SeeDirectory = () => {
               </tr>
             ))}
           </tbody>
+
         </table>
       </div> 
     </div>
