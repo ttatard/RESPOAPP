@@ -9,7 +9,7 @@ import logo1 from './Images/Dashboard1/logo1.png';
 
 const VideoPlayer = ({ videoContent }) => {
   return (
-    <div>
+    <div className="video-player">
       {videoContent && (
         <video controls width="320" height="240">
           <source src={`data:video/mp4;base64,${videoContent}`} type="video/mp4" />
@@ -204,10 +204,12 @@ const AdminDashboard = () => {
                     <button className="text-wrapper-4">Emergency Tutorials</button>
                 </Link>
                 <button className="text-wrapper-5">Log-out</button>
-                <img className="line" alt="Line" src="line-7.svg" />
-                <p className="p">Copyright © 2023 RESPO Inc. All rights reserved</p>
-                <div className="text-wrapper-6">Cebu City, Philippines</div>
+                <div className="footeruser">
+               
+               </div>
                 </nav>
+                
+                <div className="dashboard-controls">
                 <select onChange={(e) => setSelectedOption(e.target.value)}>
         <option value="">Select an option</option>
         <option value="Users">Users</option>
@@ -215,9 +217,10 @@ const AdminDashboard = () => {
         <option value="Tutorials">Tutorials</option>
       </select>
       <button onClick={selectedOption === 'Users' ? fetchUsers : fetchDirectory}>Show Data</button>
+      </div>
 
       {selectedOption === 'Users' && (
-        <div>
+        <div className = "usertable">
           <h2>User Management</h2>
           <table>
             <thead>
@@ -256,7 +259,7 @@ const AdminDashboard = () => {
       )}
 
     {selectedOption === 'Directory' && (
-        <div>
+        <div className ="directorytable">
           <h2>Directory Management</h2>
           <table>
             <thead>
@@ -311,7 +314,7 @@ const AdminDashboard = () => {
       )}
 
   {selectedOption === 'Tutorials' && (
-        <div>
+        <div className="tutorials-section">
           <h2>Video Tutorials</h2>
           <form onSubmit={handleSubmitTutorial}>
             {/* Form to add new tutorial */}
@@ -336,14 +339,17 @@ const AdminDashboard = () => {
           </form>
 
           {/* Display video tutorials */}
+          <div className="video-container">
           {videoData.map((tutorial) => (
-          <div key={tutorial.videoId}>
+          <div key={tutorial.videoId} className="video-item">
           <h3>{tutorial.title}</h3>
         <p>{tutorial.description}</p>
         {/* Pass video content to VideoPlayer component */}
-        <VideoPlayer videoContent={tutorial.content} />
+        <VideoPlayer videoContent={tutorial.content} 
+      />
         </div>
           ))}
+        </div>
         </div>
       )}
     </div>
