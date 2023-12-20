@@ -1,6 +1,6 @@
 .emergency {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     height: 100vh;
@@ -29,7 +29,7 @@
     top: 209px;
     white-space: nowrap;
     width: 584px;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
 }
 
 .emergency .text-wrapper {
@@ -154,8 +154,8 @@
 }
 
 .emergency video {
-    width: 640px;
-    height: 480px;
+    width: 400px;
+    height: 200px;
     margin-right: 20px; /* Add margin to create space between videos */
   }
   
@@ -197,10 +197,23 @@
     font-size: 28px; /* Adjust the font size as needed */
   }
   
-  .emergency .video-container {
+  .video-container {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px; /* Add margin to separate videos from the content above */
+    justify-content: center; /* Add space between videos */
+    gap: 15px; /* Reduce the space between videos */
+    margin-top: 30px; /* Add margin to separate videos from the content above */
+    padding-right: 300px;
+    
   }
+  
+  .emergency .video-item {
+    width: calc(33.33% - 10px); /* Set the width of each video item with reduced space in between */
+    margin-bottom: 20px;
+  }
+  
+
+  .emergency .video-wrapper {
+    margin-bottom: 10px;
+  }
+
+

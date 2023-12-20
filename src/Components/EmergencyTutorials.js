@@ -6,7 +6,7 @@ import logo1 from './Images/Dashboard1/logo1.png';
 
 const VideoPlayer = ({ videoContent }) => {
   return (
-    <div>
+    <div className="video-wrapper">
       {videoContent && (
         <video controls width="640" height="480">
           <source src={`data:video/mp4;base64,${videoContent}`} type="video/mp4" />
@@ -23,7 +23,7 @@ const EmergencyTutorialss = () => {
   const fetchTutorials = async () => {
     try {
       const response = await axios.get('http://localhost:8080/tutorial/getAllTutorials/');
-      console.log('Video data:', response.data);
+      console.log('Tutorial data:', response.data);
       setVideoData(response.data);
     } catch (error) {
       console.error('Error fetching tutorials: ', error);
@@ -33,6 +33,7 @@ const EmergencyTutorialss = () => {
   useEffect(() => {
     fetchTutorials();
   }, []);
+
 
   return (
     <div className="emergency">
@@ -63,11 +64,13 @@ const EmergencyTutorialss = () => {
       
       {/* Render video player with the fetched video data */}
       <div className="video-container">
-        {videoData.map((tutorial) => (
-          <div key={tutorial.videoId}>
-            <h2>{tutorial.title}</h2> {/* Make the title bigger */}
+        {/* Display video tutorials */}
+        {videoData.map((tutorial, index) => (
+          <div key={tutorial.videoId} className="video-item">
+            <h3>{tutorial.title}</h3>
+            <p>{tutorial.description}</p>
+            {/* Pass video content to VideoPlayer component */}
             <VideoPlayer videoContent={tutorial.content} />
-            <p>{tutorial.description}</p> {/* Display the description below the video */}
           </div>
         ))}
       </div>
