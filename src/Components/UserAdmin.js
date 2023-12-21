@@ -137,23 +137,17 @@ const AdminDashboard = () => {
   const handleSubmitDirectory = async (event) => {
     event.preventDefault();
     try {
-      if (selectedDirectory) {
-        const response = await axios.put(`http://localhost:8080/department/updateDepartment/${selectedDirectory.deptId}`, selectedDirectory);
-        console.log('Directory updated: ', response.data);
-        setSelectedDirectory(null);
-      } else {
-        const response = await axios.post('http://localhost:8080/department/insertDepartment', newDirectory);
-        console.log('New directory added: ', response.data);
-        setNewDirectory({
-          DeptName: '',
-          Loc: '',
-          pNum: '',
-          isDeleted: false,
-        });
-      }
-      fetchDirectory(); // Refresh directory data after adding or updating
+      const response = await axios.post('http://localhost:8080/department/insertDepartment', newDirectory);
+      console.log('New directory added: ', response.data);
+      setNewDirectory({
+        deptName: '',
+        loc: '',
+        pNum: '',
+        isDeleted: false,
+      });
+      fetchDirectory(); // Refresh directory data after adding
     } catch (error) {
-      console.error('Error adding or updating directory: ', error);
+      console.error('Error adding directory: ', error);
     }
   };
 
@@ -313,47 +307,33 @@ const AdminDashboard = () => {
                   <td>{directory.pNum}</td>
                   <td>{directory.isDeleted ? 'Deleted' : 'Active'}</td>
                   <td>
-                  <button onClick={() => handleUpdateDirectory(directory)}>Update</button>
                   <button onClick={() => handleDeleteDirectory(directory.deptId)}>Delete</button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <form onSubmit={selectedDirectory ? handleSubmitDirectory : handleSubmitDirectory}>
+          <form onSubmit={handleSubmitDirectory}>
+            {/* Form to add new directory */}
             <input
               type="text"
               placeholder="Department Name"
-              value={selectedDirectory ? selectedDirectory.deptName : newDirectory.deptName}
-              onChange={(e) =>
-                setSelectedDirectory
-                  ? setSelectedDirectory({ ...selectedDirectory, deptName: e.target.value })
-                  : setNewDirectory({ ...newDirectory, deptName: e.target.value })
-              }
+              value={newDirectory.deptName}
+              onChange={(e) => setNewDirectory({ ...newDirectory, deptName: e.target.value })}
             />
             <input
               type="text"
               placeholder="Location"
-              value={selectedDirectory ? selectedDirectory.loc : newDirectory.loc}
-              onChange={(e) =>
-                setSelectedDirectory
-                  ? setSelectedDirectory({ ...selectedDirectory, loc: e.target.value })
-                  : setNewDirectory({ ...newDirectory, loc: e.target.value })
-              }
+              value={newDirectory.loc}
+              onChange={(e) => setNewDirectory({ ...newDirectory, loc: e.target.value })}
             />
             <input
               type="text"
               placeholder="Contact Information"
-              value={selectedDirectory ? selectedDirectory.pNum : newDirectory.pNum}
-              onChange={(e) =>
-                setSelectedDirectory
-                  ? setSelectedDirectory({ ...selectedDirectory, pNum: e.target.value })
-                  : setNewDirectory({ ...newDirectory, pNum: e.target.value })
-              }
+              value={newDirectory.pNum}
+              onChange={(e) => setNewDirectory({ ...newDirectory, pNum: e.target.value })}
             />
-            <button type="submit">
-              {selectedDirectory ? 'Update Directory' : 'Add Directory'}
-            </button>
+            <button type="submit">Add Directory</button>
           </form>
           {data.length > 0 && <ExportPDF data={data} />}
         </div>
